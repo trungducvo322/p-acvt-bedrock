@@ -521,8 +521,8 @@ main {
     opacity: 1;
   }
 }
-.l-container2, .l-container {
-  max-width: 1086px;
+.l-containerFull, .l-container2, .l-container {
+  max-width: 1470px;
   margin: 0 auto;
   padding: 0 15px;
   width: 100%;
@@ -530,6 +530,10 @@ main {
 
 .l-container2 {
   max-width: 1470px;
+}
+
+.l-containerFull {
+  max-width: unset;
 }
 
 .mainv__inner {
