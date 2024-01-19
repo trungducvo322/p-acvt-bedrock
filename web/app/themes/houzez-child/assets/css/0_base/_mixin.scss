@@ -1,0 +1,53 @@
+//============================================
+// clearfix
+//============================================
+@mixin clear {
+	*zoom: 1;
+	&:after {
+		display: block;
+		content: "";
+		clear: both;
+	}
+}
+
+//============================================
+// breakpoint
+//============================================
+$breakpoints: (
+	"xs2": "screen and (max-width: 640px) and (orientation: portrait)",
+	"xs": "screen and (max-width: 440px)",
+	"sm": "screen and (max-width: 576px)",
+	"s": "screen and (max-width: 680px) ,screen and (max-width: 737px) and (orientation: landscape)",
+	"m": "screen and (max-width: 1024px)",
+	"m2": "screen and (min-width: 1025px)",
+	"l": "screen and (max-width: 1280px)",
+	"xl": "screen and (max-width: 1500px)",
+	"nav": "screen and (max-width: 768px) ,screen and (max-width: 737px) and (orientation: landscape)",
+) !default;
+
+@mixin media-query($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media #{map-get($breakpoints, $breakpoint)} {
+			@content;
+		}
+	} @else {
+		@warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+      + "Please make sure it is defined in `$breakpoints` map.";
+	}
+}
+
+@mixin imgbox($pb) {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: $pb;
+	& > img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		font-family: "object-fit: cover;";
+	}
+}

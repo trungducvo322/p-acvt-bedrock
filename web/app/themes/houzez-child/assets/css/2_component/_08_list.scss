@@ -1,0 +1,153 @@
+/*------------------------------------------------------------
+list
+------------------------------------------------------------*/
+
+/*
+------------------------------------------------------------*/
+.grid > div {
+    margin-top: 52px;
+}
+
+.grid__item > p {
+    margin-top: 7px;
+}
+
+.grid__item > span {
+    display: block;
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.grid__item .tags {
+    margin-top: 19px;
+}
+
+.grid__item .light p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 58px;
+}
+
+.grid__title {
+    margin-top: 23px;
+}
+
+.grid__title a {
+    margin-bottom: 5px;
+    transition: 0.3s;
+    width: calc(100% - 40px);
+    display: block;
+}
+
+.grid__gallery {
+    overflow: hidden;
+
+    &:hover .imgbox>img {
+        transform: scale(1.08);
+    }
+}
+
+.grid__gallery .imgbox {
+    @include imgbox(100%);
+    border-radius: 15px;
+
+    &>img {
+        transition: all 0.8s ease;
+    }
+}
+
+.grid__gallery .imgbox button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 9%;
+    right: 4%;
+    z-index: 1;
+
+    &::after {
+        content: "";
+        display: none;
+        width: 24px;
+        height: 21px;
+        background: url("../img/icon-favorite-clicked.png") no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: center;
+        animation: grow 0.3s ease-in-out;
+        @keyframes grow {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+            }
+            50% {
+                transform: scale(1.1) translate(-50%, -50%);
+            }
+            100% {
+                transform: scale(1) translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+.grid__gallery .imgbox.clicked button {
+    &::after {
+        display: block;
+    }
+}
+
+.grid__gallery .imgbox.clicked button img {
+    visibility: hidden;
+
+    &::after {
+        visibility: visible;
+    }
+}
+
+.grid__gallery .swiper-button-prev::after,
+.grid__gallery .swiper-button-next::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-top: 2px solid #fff;
+    color: #fff;
+}
+
+.grid__gallery .swiper-button-prev::after {
+    border-left: 2px solid #fff;
+    transform: rotate(-45deg);
+}
+
+.grid__gallery .swiper-button-next::after {
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+}
+
+.grid__gallery .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+
+    &:first-child,
+    &:last-child {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+.grid__gallery .swiper-pagination-bullet-active {
+    background-color: #fff;
+    width: 7px !important;
+    height: 7px !important;
+}
+
+.top-post__imgbox {
+    @include imgbox(73.65%);
+    border-radius: 10px;
+}

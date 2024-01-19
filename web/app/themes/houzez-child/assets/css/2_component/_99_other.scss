@@ -1,0 +1,60 @@
+/*------------------------------------------------------------
+other
+------------------------------------------------------------*/
+
+/*
+------------------------------------------------------------*/
+.loading {
+    text-align: center;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &.active {
+        margin: 50px 0 30px;
+        height: 26px;
+    }
+}
+
+.dotted {
+    li {
+        display: inline-block;
+        list-style: none;
+        height: 18px;
+        width: 18px;
+        background: #0fa;
+        border-radius: 100%;
+        margin: 0 0.2em;
+        animation: anm 1s linear infinite alternate;
+    }
+
+    li:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    li:nth-child(3) {
+        animation-delay: 0.8s;
+    }
+}
+
+@keyframes anm {
+    0% {
+        transform: scale(0.1);
+        filter: hue-rotate(0deg);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(0.4);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: hue-rotate(360deg);
+    }
+}
+
+.is-ajax-search-details, .is-ajax-search-result {
+    padding: 2px!important;
+}
