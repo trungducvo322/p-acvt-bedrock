@@ -2,13 +2,14 @@
 ------------------------------------------------------------*/
 body {
 	font-family: $mainFonts;
-	font-size: 1.4rem;
+	font-size: 1.8rem;
 	width: 100%;
 	margin: auto;
-	line-height: 1.5;
+	line-height: 1.8;
 	word-break: break-word;
 	@include media-query("s") {
 		min-width: 320px;
+		font-size: 1.4rem;
 	}
 }
 

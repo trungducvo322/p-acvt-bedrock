@@ -26,7 +26,7 @@ $houzez_local = houzez_get_localization();
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-video.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="<?= PAS; ?>assets/css/style.css">
 	<meta name="agd-partner-manual-verification" />
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -100,3 +100,18 @@ $houzez_local = houzez_get_localization();
 	</header>
 	<!--▲ Header ▲-->
 	<main id="main-wrap" class="main-wrap ">
+		<div class="l-container">
+			<div class="menu__slider swiper-container">
+				<?php
+				wp_nav_menu(array(
+					'menu_class' => "swiper-wrapper",
+					'container' => "ul",
+					'container_class' => "1",
+					'theme_location' => "top-menu",
+					'list_item_class'  => 'swiper-slide',
+				));
+				?>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>

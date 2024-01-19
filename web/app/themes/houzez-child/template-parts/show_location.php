@@ -1,6 +1,6 @@
 <section class="grid-container">
     <div class="l-container">
-        <div class="grid row gx-md-5 gx-4">
+        <div class="grid row gx-md-5 gx-4 js-loadmore">
             <?php
             if (get_query_var('paged')) {
                 $paged = get_query_var('paged');
@@ -14,6 +14,16 @@
                 'posts_per_page' => 20,
                 'paged' => $paged,
             );
+
+            if (current_term_id) {
+                $args_tax = array(
+                    'taxonomy' => current_tax,
+                    'field' => 'id',
+                    'terms' => current_term_id,
+                );
+                $tax_query[] = $args_tax;
+                $args['tax_query'] = $tax_query;
+            }
 
             $loop = new WP_Query($args);
             ?>
@@ -74,9 +84,34 @@
             } ?>
             <?php wp_reset_postdata(); ?>
         </div>
+        <?php
+        $current_page = max(1, get_query_var('paged'));
+        $total_pages = $loop->max_num_pages;
+        $big = 999999999; ?>
+        <div class="pagination js-pagination">
+            <?php
+            echo paginate_links(array(
+                'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+                'format' => '?paged=%#%',
+                'current' => $paged,
+                'total' => $total_pages,
+                'prev_text'    => __('← Previous'),
+                'next_text'    => __('Next  →'),
+            ));
+            ?>
+        </div>
 
 
-
-      
+        <div class="scroller-status">
+            <div class="infinite-scroll-request ">
+                <ul class="dotted">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <p class="infinite-scroll-last"></p>
+            <p class="infinite-scroll-error"></p>
+        </div>
     </div>
 </section>
