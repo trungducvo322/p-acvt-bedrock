@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // mainv 
+    // mainv
     if ($('.mainv-container').length > 0) {
         var mySwiper = new Swiper('.mainv-container', {
             effect: "fade",
@@ -76,7 +76,7 @@ $(document).ready(function () {
         $(this).parent('.grid__gallery .imgbox').toggleClass('clicked');
     });
 
-    // menu 
+    // menu
     $('#menu-main-menu .menu-item-has-children').append('<div class="js-menu-icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>');
     $('.js-menu-icon').on('click', function () {
         $(this).toggleClass('open-menu');
@@ -347,4 +347,52 @@ if ($('.js-tintuc-slide').length > 0) {
             }
         }
     });
+}
+
+// ajax Property "Loai hinh" tab
+
+if ($('.js-propertyTab').length > 0) {
+  let tabBox = $('.js-propertyTab');
+
+  $('.js-propertyTab__each').on("click touch", tabBox, function(e) {
+    e.preventDefault();
+
+    let cate_id = $(this).data('tab-id');
+    let catContentDOM = $(this).data('tab-content');
+    let catTotalPage = $(this).data('tab-totalPage');
+
+    propertyTabAjax(cate_id, catContentDOM, catTotalPage);
+
+  })
+
+
+  function propertyTabAjax(cate_id, catContentID, totalPage, page = 1) {
+
+    let catContentDOM = $('#' + catContentID);
+
+    let process = $.ajax({
+      type: "post",
+      url: ajaxurl,
+      data: {
+        cate_id: cate_id,
+        cate_page: page,
+        cate_totalPage: totalPage
+      },
+      dataType: "json",
+
+      success: function (response) {
+        if (response.type == "success") {
+
+          return false;
+        }
+
+        if (response.type == "empty") {
+
+          return false;
+        }
+      },
+    });
+  }
+
+
 }

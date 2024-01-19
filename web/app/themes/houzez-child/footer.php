@@ -64,6 +64,7 @@
 </footer>
 
 <!--▲ Footer ▲-->
+<script>var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
@@ -74,10 +75,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0-beta.5/plugins/autoplay/lg-autoplay.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/video/lg-video.min.js"></script>
 <script src="<?= PAS ?>assets/js/main.js"></script>
- 
+
 </body>
 <?php wp_footer(); ?>
-<!-- 
+<!--
 <?php if (get_field('footer_script', 'option')) : ?>
   <?php the_field('footer_script', 'option'); ?>
 <?php endif; ?> -->

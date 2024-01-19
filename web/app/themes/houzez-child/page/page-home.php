@@ -13,7 +13,7 @@ Template Name: Trang chủ
             <h2 class="c-titleStyle1">ĐỊA ĐIỂM MỚI </h2>
         </div>
         <div class="c-gridNewPost-content mt-50 mt-s-30">
-            <?php 
+            <?php
             $args = [
                 'post_type' => 'property',
                 'posts_per_page' => 6
@@ -24,8 +24,8 @@ Template Name: Trang chủ
             <?php
                 while ( $propertyListNew->have_posts() ):
                     $propertyListNew->the_post();
-                    get_template_part('page/views/postViewProperty');
-                endwhile;   
+                    get_template_part('page/views/postViewPropertyItem');
+                endwhile;
             ?>
             </div>
             <?php
@@ -42,7 +42,7 @@ Template Name: Trang chủ
         </div>
     </div>
     <div class="c-gridPost-content">
-        <?php 
+        <?php
             $args = [
                 'post_type' => 'property',
                 'posts_per_page' => 12
@@ -56,9 +56,9 @@ Template Name: Trang chủ
             ) );
         ?>
         <?php if (have_posts($terms)): ?>
-            <ul class="c-gridPost-tab">
+            <ul class="c-gridPost-tab js-propertyTab" data-tab-content="js-property-content">
                 <?php foreach ($terms as $value): ?>
-                    <li>
+                    <li class="js-propertyTab__each" data-tab-id="<?php echo $value->term_id ?>">
                         <div class="icon">
                             <img src="<?php echo PAS ?>/assets/img/ico/ico_tra-sua.svg" alt="<?php echo $value->name ?>">
                         </div>
@@ -69,23 +69,30 @@ Template Name: Trang chủ
         <?php endif; ?>
         <div class="c-gridPost-tabcontent">
             <div class="l-container">
-            <?php 
-            if ( $propertyList->have_posts() ): ?>
-            <div class="c-postNews-grid c-postNews-grid4">
             <?php
+            if ( $propertyList->have_posts() ): ?>
+            <div class="c-postNews-grid c-postNews-grid4" id="js-property-content">
+            <?php
+                $totalPage = $propertyList->max_num_pages;
                 $count = 0;
                 while ( $propertyList->have_posts() ):
                     $propertyList->the_post();
                     $count++;
-                    get_template_part('page/views/postViewProperty');
+                    get_template_part('page/views/postViewPropertyItem');
                     if ($count % 6 == 3) {
                         get_template_part('page/views/postViewPropertyBanner');
                     }
-                endwhile;   
+                endwhile;
             ?>
+            </div>
+            <div class="c-gridPost-tabcontent__pagi js-propertyTab__page" data-tab-page="1" data-tab-content="js-property-content" data-tab-totalPage="<?php echo $totalPage ?>">
+                <a href="#" class="js-pagi-prev">< Trang trước</a>
+                <a href="#" class="js-pagi-next">Trang tiếp theo ></a>
+                <div class=""><input type="text" name="page" class="js-pagi-page" value="1">/<?php echo $totalPage ?></div>
             </div>
             <?php
             endif;
+            wp_reset_postdata();
             ?>
 
             </div>
@@ -156,7 +163,7 @@ Template Name: Trang chủ
 </section>
 <section class="c-tintuc">
     <div class="l-container">
-        <?php 
+        <?php
             $args = [
                 'post_type' => 'post',
                 'posts_per_page' => 4
@@ -168,7 +175,7 @@ Template Name: Trang chủ
             <a href="<?php echo home_url('/tin-tuc/') ?>" class="c-tintuc-header__xemthem">Xem thêm</a>
         </div>
         <div class="c-tintuc-box mt-50 mt-s-30">
-            <?php 
+            <?php
             if ( $postList->have_posts() ): ?>
             <div class="swiper-container js-tintuc-slide">
                 <div class="swiper-wrapper">
@@ -178,7 +185,7 @@ Template Name: Trang chủ
                         echo "<div class=\"swiper-slide\">";
                         get_template_part('page/views/postViewNews');
                         echo "</div>";
-                    endwhile;   
+                    endwhile;
                 ?>
                 </div>
             </div>

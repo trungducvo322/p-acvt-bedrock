@@ -100,3 +100,5 @@ add_action( 'init', 'create_admin_user_fn' );
 function showr($array_data) {
 	return print("<pre>".print_r($array_data,true)."</pre>");
 }
+
+include 'page/func/ajax.php';
