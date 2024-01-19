@@ -43,22 +43,33 @@ Template Name: Trang chủ
     </div>
     <div class="c-gridPost-content">
         <?php
-            $args = [
-                'post_type' => 'property',
-                'posts_per_page' => 12
-            ];
-            $propertyList = new WP_Query( $args );
-
             $terms = get_terms( array(
                 'taxonomy'   => 'property_type',
                 'hide_empty' => false,
                 'posts_per_page' => 12
             ) );
+
+            $defaultTerm = $terms[0]->term_id;
+
+            $args = [
+                'post_type' => 'property',
+                'posts_per_page' => 12,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'property_type',
+                        'terms' => $defaultTerm,
+                        'field' => 'term_id',
+                    )
+                ),
+            
+            ];
+            $propertyList = new WP_Query( $args );
+
         ?>
         <?php if (have_posts($terms)): ?>
-            <ul class="c-gridPost-tab js-propertyTab" data-tab-content="js-property-content">
-                <?php foreach ($terms as $value): ?>
-                    <li class="js-propertyTab__each" data-tab-id="<?php echo $value->term_id ?>">
+            <ul class="c-gridPost-tab js-propertyTab">
+                <?php foreach ($terms as $key => $value): ?>
+                    <li class="js-propertyTab__each <?php echo $key == 0 ? 'is-active' : '' ?> " data-tab-id="<?php echo $value->term_id ?>" data-tab-content="js-property-content">
                         <div class="icon">
                             <img src="<?php echo PAS ?>/assets/img/ico/ico_tra-sua.svg" alt="<?php echo $value->name ?>">
                         </div>
@@ -71,24 +82,12 @@ Template Name: Trang chủ
             <div class="l-container">
             <?php
             if ( $propertyList->have_posts() ): ?>
-            <div class="c-postNews-grid c-postNews-grid4" id="js-property-content">
-            <?php
-                $totalPage = $propertyList->max_num_pages;
-                $count = 0;
-                while ( $propertyList->have_posts() ):
-                    $propertyList->the_post();
-                    $count++;
-                    get_template_part('page/views/postViewPropertyItem');
-                    if ($count % 6 == 3) {
-                        get_template_part('page/views/postViewPropertyBanner');
-                    }
-                endwhile;
-            ?>
-            </div>
-            <div class="c-gridPost-tabcontent__pagi js-propertyTab__page" data-tab-page="1" data-tab-content="js-property-content" data-tab-totalPage="<?php echo $totalPage ?>">
-                <a href="#" class="js-pagi-prev">< Trang trước</a>
-                <a href="#" class="js-pagi-next">Trang tiếp theo ></a>
-                <div class=""><input type="text" name="page" class="js-pagi-page" value="1">/<?php echo $totalPage ?></div>
+            <div id="js-property-content">
+                <?php get_template_part('page/views/postViewPropertyTab', '', [ 
+                    'propertyList' => $propertyList, 
+                    'term_id' => $defaultTerm,
+                    'page' => 1
+                    ]); ?>
             </div>
             <?php
             endif;

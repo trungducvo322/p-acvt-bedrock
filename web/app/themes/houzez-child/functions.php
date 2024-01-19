@@ -65,6 +65,9 @@ function check_taxonomy()
 {
 	$arrTax = array('property_type', 'property_status', 'property_city', 'property_area', 'property_label', 'property_country', 'property_feature');
 	$term_id = '';
+	$tax_name = '';
+	$term_count = '';
+	$term_title = '';
 	if (is_tax($arrTax) || is_category()) {
 		$object = get_queried_object();
 		$tax_name = $object->taxonomy;

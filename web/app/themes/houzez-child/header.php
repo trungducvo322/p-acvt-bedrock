@@ -100,18 +100,3 @@ $houzez_local = houzez_get_localization();
 	</header>
 	<!--▲ Header ▲-->
 	<main id="main-wrap" class="main-wrap ">
-		<div class="l-container">
-			<div class="menu__slider swiper-container">
-				<?php
-				wp_nav_menu(array(
-					'menu_class' => "swiper-wrapper",
-					'container' => "ul",
-					'container_class' => "1",
-					'theme_location' => "top-menu",
-					'list_item_class'  => 'swiper-slide',
-				));
-				?>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
-			</div>
-		</div>

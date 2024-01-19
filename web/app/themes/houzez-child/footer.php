@@ -29,7 +29,7 @@
 			<p class="c-footerSocial__header">Kết nối với chúng tôi</p>
 			<div class="c-footerSocial-facebook">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_facebook.svg" alt="Facebook logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_facebook-white.svg" alt="Facebook logo">
 				</a>
 			</div>
 			<div class="c-footerSocial-tiktok">
@@ -40,7 +40,7 @@
 			</div>
 			<div class="c-footerSocial-instagram">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_instagram.svg" alt="Instagram logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_instagram-white.svg" alt="Instagram logo">
 				</a>
 
 			</div>
@@ -52,7 +52,7 @@
 			</div>
 			<div class="c-footerSocial-zalo">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_zalo.svg" alt="Zalo logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_zalo-white.svg" alt="Zalo logo">
 				</a>
 			</div>
 		</div>

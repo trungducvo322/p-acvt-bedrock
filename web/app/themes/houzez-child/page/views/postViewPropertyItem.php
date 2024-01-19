@@ -15,9 +15,21 @@
         <?php echo strip_tags(substr(get_the_content() , 0, 300)) ?>
     </div>
     <div class="each-address">
-
+        <?php $address = get_post_meta( get_the_ID(), 'fave_property_address', true ); ?>
+        <?php  echo $address; ?>
     </div>
-    <div class="each-property-type">
+    <div class="each-property-types">
+        <?php 
+            $taxos = get_the_terms( get_the_ID(), 'property_type' );
 
+            if ($taxos) {
+                foreach ($taxos as $key => $taxo) {
+                    $color = get_field('color', 'property_type_'.$taxo->term_id);
+                    ?>
+                    <div class="each-property-types__item" style="background-color: <?php echo $color ? $color : '#000' ?>;"><?php echo $taxo->name ?></div>
+                    <?php
+                }
+            }
+        ?>
     </div>
 </div>

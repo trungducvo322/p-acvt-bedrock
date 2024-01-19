@@ -352,46 +352,75 @@ if ($('.js-tintuc-slide').length > 0) {
 // ajax Property "Loai hinh" tab
 
 if ($('.js-propertyTab').length > 0) {
-  let tabBox = $('.js-propertyTab');
+    let tabBox = $('.js-propertyTab');
 
   $('.js-propertyTab__each').on("click touch", tabBox, function(e) {
     e.preventDefault();
 
+    let parrentDOM = $(this).closest('.js-propertyTab');
     let cate_id = $(this).data('tab-id');
     let catContentDOM = $(this).data('tab-content');
-    let catTotalPage = $(this).data('tab-totalPage');
 
-    propertyTabAjax(cate_id, catContentDOM, catTotalPage);
+    parrentDOM.find('.js-propertyTab__each').removeClass('is-active');
+    $(this).addClass('is-active');
+
+    propertyTabAjax(cate_id, catContentDOM);
+
 
   })
 
+  $(document).on('click touch', '.js-pagi-change', function(e) {
+    e.preventDefault();
 
-  function propertyTabAjax(cate_id, catContentID, totalPage, page = 1) {
+    let parentDOM = $(this).closest('.js-propertyTab__page');
+    let catContentDOM = parentDOM.data('tab-content');
+    let page = $(this).data('pagi');
+    let cate_id = parentDOM.data('tab-id');
+    window.scrollTo({top: $('#' + catContentDOM).offset().top - 150, behavior: 'smooth'});
+    propertyTabAjax(cate_id, catContentDOM, page);
+    return false;
+
+  })
+
+  function propertyTabAjax(cate_id, catContentID, page = 1) {
 
     let catContentDOM = $('#' + catContentID);
+    catContentDOM.addClass('c-loading');
 
     let process = $.ajax({
-      type: "post",
-      url: ajaxurl,
-      data: {
-        cate_id: cate_id,
-        cate_page: page,
-        cate_totalPage: totalPage
-      },
-      dataType: "json",
+        type: "post",
+        url: ajaxurl,
+        data: {
+            cate_id: cate_id,
+            cate_page: page,
+            action: "ajax_property_loaihinh"
+        },
+        dataType: "html",
+    
+    //   dataType: "json",
+    //   done: function (response) {
+        
 
-      success: function (response) {
-        if (response.type == "success") {
+        // if (response.type == "success") {
+        //     console.log(response);
+        //     catContentDOM.html(response.content);
+        //     return false;
+        // }
 
-          return false;
-        }
+        // if (response.type == "empty") {
 
-        if (response.type == "empty") {
-
-          return false;
-        }
-      },
+        //   return false;
+        // }
+    //   },
     });
+
+    process.then(function (response) {
+        catContentDOM.removeClass('c-loading');
+        catContentDOM.html(response);
+        return false;
+    })
+
+    return false;
   }
 
 

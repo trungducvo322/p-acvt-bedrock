@@ -24,3 +24,8 @@ php -r "unlink('composer-setup.php');"
 
 ** run server
 php -S 127.0.0.1:8001 -t web/
+
+
+
+** resources
+https://github.com/n3r4zzurr0/svg-spinners?tab=readme-ov-file
