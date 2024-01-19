@@ -1,0 +1,37 @@
+/*------------------------------------------------------------
+title
+------------------------------------------------------------*/
+
+
+/*
+------------------------------------------------------------*/
+.title {
+    font-size: 42px;
+	font-weight: 700;
+    line-height: 52.2px;
+    @include media-query("nav") {
+		font-size: 30px;
+		line-height: 35.5px;
+	}
+}
+
+.title-small {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 26.25px;
+    color: #000;
+    @include media-query("nav") {
+        font-size: 16px;
+        line-height: 26.25px;
+    }
+}
+
+.title-grid {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    color: $text-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

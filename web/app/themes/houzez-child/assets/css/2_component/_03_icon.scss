@@ -1,0 +1,55 @@
+/*------------------------------------------------------------
+icon
+------------------------------------------------------------*/
+.likes {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 15px;
+        margin-right: 4px;
+        background: url('../img/icon-like.png') no-repeat;
+        background-size: cover;
+    }
+}
+/*------------------------------------------------------------*/
+.tags {
+    font-weight: 700;
+    font-size: 12px;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        margin-right: 6px;
+        background: url('../img/icon-tag.png') no-repeat;
+        background-size: cover;
+        vertical-align: middle;
+    }
+}
+
+.tags a.entertainment {
+    color: #FF9914;
+}
+
+.tags a.resort {
+    color: #08BDBD;
+}
+
+.tags a.hotTrend {
+    color: #2F80ED;
+}
+
+.tags a.fnb {
+    color: #F21B3F;
+}
+/*
+------------------------------------------------------------*/
+.social a:not(:last-child) {
+	margin-right: 17px;
+}

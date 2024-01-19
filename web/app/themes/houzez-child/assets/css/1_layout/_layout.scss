@@ -1,0 +1,132 @@
+/* layout
+------------------------------------------------------------*/
+body {
+	font-family: $mainFonts;
+	font-size: 1.4rem;
+	width: 100%;
+	margin: auto;
+	line-height: 1.5;
+	word-break: break-word;
+	@include media-query("s") {
+		min-width: 320px;
+	}
+}
+
+body::-webkit-scrollbar {
+	width: 5px;
+	background: #ddd;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #ddd;
+	border-radius: 10px;
+	box-shadow: inset 0 0 100px 50px $primary;
+}
+
+main {
+	animation: fadeIn 2s ease 0s 1 normal;
+}
+
+.main-wrap.slideout-panel {
+	box-shadow: none!important;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+//-------------------------------------------------------
+%container {
+	max-width: $con_width;
+	margin: 0 auto;
+	padding: 0 15px;
+	width: 100%;
+}
+
+.l-container {
+	@extend %container;
+}
+
+.l-container2 {
+	@extend %container;
+	max-width: $con_width2;
+}
+//-------------------------------------------------------
+.mainv__inner {
+	position: relative;
+
+	.mainv__imageBox {
+		text-align: right;
+		max-height: 100vh;
+		min-height: 500px;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		height: 37vw;
+		margin-left: auto;
+	}
+
+	.mainv__image {
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		font-family: "object-fit: cover;";
+		min-width: 100%;
+		animation-name: Move;
+		animation-duration: 1.8s;
+		animation-delay: .3s;
+		animation-fill-mode: both;
+		animation-timing-function: ease-out;
+	}
+}
+
+//========================
+
+.c-backtop {
+	height: 40px;
+	width: 40px;
+	padding-top: 5px;
+	transition: 0.4s ease;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	bottom: 100px;
+	right: 70px;
+	z-index: 999;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+	@include media-query("nav") {
+		bottom: 30px;
+		right: 30px;
+	}
+
+}
+
+.c-backtop__btn {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-right: 1px solid white;
+	border-top: 1px solid white;
+	transform: rotate(-45deg);
+	color: #000;
+}
+
+.visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.stick {
+	position: absolute;
+	top: -100px;
+	@include media-query("nav") {
+		top: -90px;
+	}
+}
