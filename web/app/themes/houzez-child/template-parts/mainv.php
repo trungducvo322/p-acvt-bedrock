@@ -8,13 +8,12 @@
                     <?php foreach ($banners as $banner) { ?>
                         <div class="swiper-slide">
                             <div class="mainv__image">
-                                <img class="" src="<?= $banner['image']; ?>" width="1980" height="1042" alt="">
+                                <img class="" src="<?= $banner['image']; ?>" alt="">
                             </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
-
             <div class="swiper-pagination sp-none"></div>
         </div>
     </section>

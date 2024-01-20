@@ -99,4 +99,5 @@ $houzez_local = houzez_get_localization();
 		</div>
 	</header>
 	<!--▲ Header ▲-->
-	<main id="main-wrap" class="main-wrap ">
+	<!-- <main id="main-wrap" class="main-wrap "> -->
+	<main>

@@ -180,6 +180,10 @@
     padding-top: 50px;
     padding-bottom: 50px;
 
+    @include media-query ('s') {
+        padding-bottom: 25px;
+    }
+
     &-content {
         margin-top: 50px;
     }
@@ -270,6 +274,8 @@
 
             @include media-query ('s') {
                 width: 100%;
+                margin-top: 25px;
+                padding: 25px 0;
             }
         }
     }
@@ -424,14 +430,4 @@
     &-box {
         margin-top: 50px;
     }
-}
-
-main {
-    overflow: hidden;
-    line-height: 1.8;
-
-    @include media-query("s") {
-		font-size: 1.4rem;
-
-	}
 }

@@ -30,6 +30,7 @@ $mainFonts : 'Montserrat', sans-serif;
     --color-neon: #C3ECFB;
     --color-neon-op50: #C3ECFB80;
     --color-gray-73: #737373;
+    --color-gray-f3: #f3f3f3;
 }
 
 //color common
@@ -44,4 +45,6 @@ $success: var(--color-yellow--600);
 
 $text_color : var(--color-black--600);
 $gray_color : var(--color-gray-73);
+$dark-blue-color: var(--color-dark-blue);
+$neon-color : var(--color-neon);
 $marker: var(--color-white--900);

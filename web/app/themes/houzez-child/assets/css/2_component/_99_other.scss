@@ -4,6 +4,21 @@ other
 
 /*
 ------------------------------------------------------------*/
+
+body {
+    background-color: #fff;
+}
+
+main {
+    overflow: hidden;
+    line-height: 1.8;
+
+    @include media-query("s") {
+		font-size: 1.4rem;
+
+	}
+}
+
 .loading {
     text-align: center;
     margin: 0;
@@ -59,6 +74,47 @@ other
     padding: 2px!important;
 }
 
+.c-tooltip {
+    position: relative;
+    display: inline-block;
+    background-color: unset;
+    border: unset;
+    padding: 0;
+    
+    .tooltiptext {
+        font-size: 1.2rem;
+        visibility: hidden;
+        width: max-content;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+    }
+
+    &:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+}
 
 .c-loading {
     position: relative;

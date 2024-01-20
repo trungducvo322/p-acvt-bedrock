@@ -475,6 +475,21 @@ if ($('.js-propertyTab').length > 0) {
 
     return false;
   }
-
-
 }
+
+// tooltip 
+
+function tooltipFunction(e) {
+
+    var copyURL = $('#myTooltipData').data('url');
+
+    navigator.clipboard.writeText(copyURL);
+    
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copied";
+  }
+  
+  function tooltipOutFunc() {
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copy to clipboard";
+  }

@@ -22,17 +22,6 @@
         <?php  echo $address; ?>
     </div>
     <div class="each-property-types">
-        <?php 
-            $taxos = get_the_terms( get_the_ID(), 'property_type' );
-
-            if ($taxos) {
-                foreach ($taxos as $key => $taxo) {
-                    $color = get_field('color', 'property_type_'.$taxo->term_id);
-                    ?>
-                    <div class="each-property-types__item" style="background-color: <?php echo $color ? $color : '#000' ?>;"><?php echo $taxo->name ?></div>
-                    <?php
-                }
-            }
-        ?>
+        <?php get_template_part('page/views/postTermList') ?>  
     </div>
 </div>
