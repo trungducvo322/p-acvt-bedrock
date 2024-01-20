@@ -7,6 +7,14 @@
         color: $text_color;
         height: min-content;
 
+        &col2 {
+            grid-column: span 2;
+
+            .each-image {
+                padding-bottom: calc(81.25% * 100% /  (2 * 100% + 10% )) !important;
+            }
+        }
+
         .each-image {
             width: 100%;
             padding-bottom: 81.25%;
@@ -361,7 +369,6 @@
 }
 
 .c-propertyTypeTag {
-    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -386,6 +393,10 @@
     font-size: 1.8rem;
     font-weight: 600;
     color: $gray_color;
+
+    @include media-query ('s') {
+        font-size: 1.4rem;
+    }
 
     &::before {
         content: '';
@@ -441,35 +452,66 @@
     padding-bottom: 33.28%;
     position: relative;
 
+    @include media-query('s') {
+        padding-bottom: 0;
+    }
+
     &-inner {
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
+        display: grid;
+        grid-template-columns: 6fr 4fr;
+        gap: 8px;
+
+        @include media-query('s') {
+            position: relative;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &-wrap {
+        width: 100%;
+        overflow: auto;
     }
 
     &-list {
         display: grid;
-        grid-template-columns: 6fr repeat(2, minmax(0, 2fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
         gap: 8px;
+
+        @include media-query('s') {
+            display: inline-flex;
+        }
 
         &__each {
             background-color: $gray_color;
             border-radius: 5px;
             overflow: hidden;
             position: relative;
-
-            &:first-child {
-                grid-row: span 3;
-                grid-column: span 1;
-            }
+            height: 100%;
 
             .image-box {
                 position: relative;
                 width: 100%;
                 height: 100%;
+
+                @include media-query('s') {
+                    width: 150px;
+                    height: auto;
+                    aspect-ratio: 16/9;
+                }
+            }
+
+            .image-box-main {
+                @include media-query('s') {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio:unset;
+                }
             }
 
             img {
@@ -499,6 +541,8 @@
             }
         }
     }
+
+    
 }
 
 .c-propertyShare {

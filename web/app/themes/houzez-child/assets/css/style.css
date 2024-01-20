@@ -1455,6 +1455,12 @@ main {
   height: -moz-min-content;
   height: min-content;
 }
+.c-postNews__eachcol2 {
+  grid-column: span 2;
+}
+.c-postNews__eachcol2 .each-image {
+  padding-bottom: 38.6904761905% !important;
+}
 .c-postNews__each .each-image {
   width: 100%;
   padding-bottom: 81.25%;
@@ -1761,7 +1767,6 @@ main {
 }
 
 .c-propertyTypeTag {
-  margin-top: 10px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -1786,6 +1791,11 @@ main {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--color-gray-73);
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-propertyAddress {
+    font-size: 1.4rem;
+  }
 }
 .c-propertyAddress::before {
   content: "";
@@ -1832,33 +1842,67 @@ main {
   padding-bottom: 33.28%;
   position: relative;
 }
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-singleGallery {
+    padding-bottom: 0;
+  }
+}
 .c-singleGallery-inner {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: 8px;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-singleGallery-inner {
+    position: relative;
+    grid-template-columns: 1fr;
+  }
+}
+.c-singleGallery-wrap {
+  width: 100%;
+  overflow: auto;
 }
 .c-singleGallery-list {
   display: grid;
-  grid-template-columns: 6fr repeat(2, minmax(0, 2fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 8px;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-singleGallery-list {
+    display: inline-flex;
+  }
 }
 .c-singleGallery-list__each {
   background-color: var(--color-gray-73);
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-}
-.c-singleGallery-list__each:first-child {
-  grid-row: span 3;
-  grid-column: span 1;
+  height: 100%;
 }
 .c-singleGallery-list__each .image-box {
   position: relative;
   width: 100%;
   height: 100%;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-singleGallery-list__each .image-box {
+    width: 150px;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-singleGallery-list__each .image-box-main {
+    width: 100%;
+    height: auto;
+    aspect-ratio: unset;
+  }
 }
 .c-singleGallery-list__each img {
   width: 100%;
@@ -2685,6 +2729,11 @@ Css of location detail
   font-weight: 700;
   color: var(--color-dark-blue);
   line-height: 1.5;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .location__description .block-wrap .block-title-wrap h2 {
+    font-size: 2.4rem;
+  }
 }
 .location__description .property-section-wrap + .property-section-wrap {
   margin-top: 60px;

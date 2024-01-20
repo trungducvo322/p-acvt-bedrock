@@ -43,20 +43,31 @@ Template Name: Trang chủ
             ?>
             <div class="c-postNews-grid c-postNews-gridSpecial c-gridNewPost__pcview">
             <?php
+
             if ( $propertyListHot->have_posts() ):
+                $count = 0;
                 while ( $propertyListHot->have_posts() ):
+                    $order = $count = ($count % 2 == 0) ? $count + 1 : $count + 5 ;
                     $propertyListHot->the_post();
                     get_template_part('page/views/postViewPropertyItem', '', [
-                        'label' => 'label-hot'
+                        'label' => 'label-hot',
+                        'order' => $order,
+                        'column' => 2
                     ]);
                 endwhile;
 
             endif;
             if ( $propertyListNew->have_posts() ):
+                $count = 0;
                 while ( $propertyListNew->have_posts() ):
+                    ++$count;
+                    $loop = floor($count / 6) + 1;
+                    $order = $count = ($count % 6 == 1 || $count % 6 == 6) ? $count + 1 : $count;
+
                     $propertyListNew->the_post();
                     get_template_part('page/views/postViewPropertyItem', '', [
-                        'label' => 'label-new'
+                        'label' => 'label-new',
+                        'order' => $order
                     ]);
                 endwhile;
 

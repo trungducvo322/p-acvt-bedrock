@@ -111,6 +111,10 @@ Css of location detail
                 font-weight: 700;
                 color: $dark-blue-color;
                 line-height: 1.5;
+
+                @include media-query ('s') {
+                    font-size: 2.4rem;
+                }
             }
         }
     }

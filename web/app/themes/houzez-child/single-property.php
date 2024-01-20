@@ -103,33 +103,38 @@
             $total_images = count($properties_images) + 1;
             ?>
             <div class="c-singleGallery">
-                <div class="c-singleGallery-inner c-singleGallery-list">
-                    <div class="c-singleGallery-list__each">
-                        <a class="" href="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" data-fancybox="gallery">
-                            <div class="image-box">
-                                <img class="w-100" src="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" alt="#">
-                            </div>
-                        </a>
-                    </div>
-    
-                    <?php
-                    $i = 0;
-                    foreach ($properties_images as $image) {
-                        ++$i;
-                    ?>
-                        <div class="c-singleGallery-list__each <?= ($i > 6) ? 'd-none' : ''; ?>">
-                            <a class="" href="<?php echo esc_url($image['url']); ?>" data-fancybox="gallery">
-                                <div class="image-box">
-                                <img class="w-100" src="<?php echo esc_url($image['url']); ?>" alt="#">
-                                <?php
-                                    if (count($properties_images) > 6 && $i == 6 ):
-                                        echo "<div class=\"c-singleGallery-list__viewall\"><span>Xem tất cả hình ảnh</span></div>";
-                                    endif;
-                                ?>
+                <div class="c-singleGallery-inner ">
+                    <div class="c-singleGallery-main">
+                        <div class="c-singleGallery-list__each">
+                            <a class="" href="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" data-fancybox="gallery">
+                                <div class="image-box image-box-main">
+                                    <img class="w-100" src="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" alt="#">
                                 </div>
                             </a>
                         </div>
-                    <?php } ?>
+                    </div>
+                    <div class="c-singleGallery-wrap">
+                        <div class="c-singleGallery-list">
+                        <?php
+                        $i = 0;
+                        foreach ($properties_images as $image) {
+                            ++$i;
+                        ?>
+                            <div class="c-singleGallery-list__each <?= ($i > 6) ? 'd-none' : ''; ?>">
+                                <a class="" href="<?php echo esc_url($image['url']); ?>" data-fancybox="gallery">
+                                    <div class="image-box">
+                                    <img class="w-100" src="<?php echo esc_url($image['url']); ?>" alt="#">
+                                    <?php
+                                        if (count($properties_images) > 6 && $i == 6 ):
+                                            echo "<div class=\"c-singleGallery-list__viewall\"><span>Xem tất cả hình ảnh</span></div>";
+                                        endif;
+                                    ?>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php } ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="location__description row justify-content-between">
@@ -144,7 +149,7 @@
                 </div>
                 <!-- side bar  -->
                 <div class="col-lg-3 col-12">
-                    <div class="location__statistic">
+                    <div class="location__statistic mt-s-30">
                         <h4 class="title-small">Liên hệ chúng tôi</h4>
                         <?php get_sidebar('property'); ?>
                     </div>
@@ -158,7 +163,7 @@
     <div class="l-container">
         <div class="others__inner">
             <h2 class="c-titleStyle2">Các địa điểm khác</h2>
-            <div class="grid row gx-md-5 gx-4">
+            <div class="">
                 <?php
                 $args = array(
                     'post_type' => 'property',
