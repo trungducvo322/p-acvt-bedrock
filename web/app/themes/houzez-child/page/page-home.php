@@ -16,22 +16,54 @@ Template Name: Trang chủ
             <?php
             $args = [
                 'post_type' => 'property',
-                'posts_per_page' => 6
+                'posts_per_page' => 4,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'property_status',
+                        'terms' => '30',
+                        'field' => 'term_id',
+                        'operator' => 'NOT IN'
+                    )
+                ),            
             ];
             $propertyListNew = new WP_Query( $args );
-            if ( $propertyListNew->have_posts() ): ?>
+
+            $args = [
+                'post_type' => 'property',
+                'posts_per_page' => 2,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'property_status',
+                        'terms' => '30',
+                        'field' => 'term_id',
+                    )
+                ),            
+            ];
+            $propertyListHot = new WP_Query( $args );
+            ?>
             <div class="c-postNews-grid c-postNews-gridSpecial">
             <?php
+            if ( $propertyListHot->have_posts() ):
+                while ( $propertyListHot->have_posts() ):
+                    $propertyListHot->the_post();
+                    get_template_part('page/views/postViewPropertyItem', '', [
+                        'label' => 'label-hot'
+                    ]);
+                endwhile;
+
+            endif;
+            if ( $propertyListNew->have_posts() ):
                 while ( $propertyListNew->have_posts() ):
                     $propertyListNew->the_post();
-                    get_template_part('page/views/postViewPropertyItem');
+                    get_template_part('page/views/postViewPropertyItem', '', [
+                        'label' => 'label-news'
+                    ]);
                 endwhile;
+
+            endif;
+
             ?>
             </div>
-            <?php
-            endif;
-            ?>
-
         </div>
     </div>
 </section>

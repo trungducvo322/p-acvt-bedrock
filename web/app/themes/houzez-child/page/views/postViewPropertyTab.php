@@ -3,6 +3,7 @@
 $propertyList = $args['propertyList'];
 $page = $args['page'];
 $cate_id = $args['term_id'];
+$label = isset($args['label']) ? $args['label'] : '';
 
 $totalPage = $propertyList->max_num_pages;
 $count = 0;
@@ -15,7 +16,9 @@ $count = 0;
     while ( $propertyList->have_posts() ):
         $propertyList->the_post();
         $count++;
-        get_template_part('page/views/postViewPropertyItem');
+        get_template_part('page/views/postViewPropertyItem', '', [
+            'label' => $label
+        ]);
         if ($count % 6 == 3) {
             get_template_part('page/views/postViewPropertyBanner');
         }

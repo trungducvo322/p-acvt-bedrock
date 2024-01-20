@@ -1,5 +1,8 @@
+<?php 
+    $label = isset($args['label']) ? $args['label'] : '';
+?>
 <div class="c-postNews__each">
-    <div class="each-image">
+    <div class="each-image <?php echo !empty($label) ? $label : '' ?>">
         <a href="<?php the_permalink() ?>">
             <?php echo get_the_post_thumbnail(get_the_ID(), 'medium') ?>
         </a>
