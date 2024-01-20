@@ -324,7 +324,16 @@
     padding-bottom: 50px;
 
     &-box {
-
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: max-content;
+            
+            img {
+                height: 64px;
+            }
+        }
     }
 }
 

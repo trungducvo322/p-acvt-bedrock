@@ -349,6 +349,35 @@ if ($('.js-tintuc-slide').length > 0) {
     });
 }
 
+//top tin tuc
+if ($('.js-doitac-slide').length > 0) {
+    var topCommentSlider = new Swiper('.js-doitac-slide', {
+        slidesPerView: 'auto',
+        slidesPerGroup: 1,
+        spaceBetween: 32,
+        // centeredSlides: true,
+        navigation: {
+            // nextEl: '.grid-container__comment .swiper-button-next',
+            // prevEl: '.grid-container__comment .swiper-button-prev',
+        },
+        autoplay: {
+            delay: 3000,
+        },
+        breakpoints: {
+            768: {
+                // slidesPerView: 6.1,
+                slidesPerGroup: 1,
+                spaceBetween: 36,
+            },
+            1024: {
+                // slidesPerView: '7.8',
+                slidesPerGroup: 1,
+                spaceBetween: 36,
+            }
+        }
+    });
+}
+
 // ajax Property "Loai hinh" tab
 
 if ($('.js-propertyTab').length > 0) {

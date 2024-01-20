@@ -1485,6 +1485,17 @@ other
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.c-doitac-box .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-max-content;
+  width: max-content;
+}
+.c-doitac-box .swiper-slide img {
+  height: 64px;
+}
+
 .c-tintuc {
   padding-top: 50px;
   padding-bottom: 100px;

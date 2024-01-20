@@ -153,11 +153,73 @@ Template Name: Trang chủ
     </div>
 </section>
 <section class="c-doitac">
-    <div class="c-doitac-header">
-        <h2 class="c-titleStyle2">ĐỐI TÁC</h2>
-    </div>
-    <div class="c-doitac-box mt-50 mt-s-30">
+    <div class="l-containerFull">
+        <div class="c-doitac-header">
+            <h2 class="c-titleStyle2">ĐỐI TÁC</h2>
+        </div>
+        <div class="c-doitac-box mt-50 mt-s-30">
+            <?php 
+                $doitacList = [
+                    [
+                        "alt" => 'Cellphone S',
+                        "image" => "doitac/ico_cellphone.png",
+                        "image2x" => "doitac/ico_cellphone@2x.png",
+                    ],
+                    [
+                        "alt" => 'Agoda',
+                        "image" => "doitac/ico_agoda.png",
+                        "image2x" => "doitac/ico_agoda@2x.png",
+                    ],
+                    [
+                        "alt" => 'KFC',
+                        "image" => "doitac/ico_kfc.png",
+                        "image2x" => "doitac/ico_kfc@2x.png",
+                    ],
+                    [
+                        "alt" => 'Kiotviet',
+                        "image" => "doitac/ico_kiotviet.png",
+                        "image2x" => "doitac/ico_kiotviet@2x.png",
+                    ],
+                    [
+                        "alt" => 'King BBQ',
+                        "image" => "doitac/ico_kingbbq.png",
+                        "image2x" => "doitac/ico_kingbbq@2x.png",
+                    ],
+                    [
+                        "alt" => 'Grab',
+                        "image" => "doitac/ico_grab.png",
+                        "image2x" => "doitac/ico_grab@2x.png",
+                    ],
+                    [
+                        "alt" => 'Lazada',
+                        "image" => "doitac/ico_lazada.png",
+                        "image2x" => "doitac/ico_lazada@2x.png",
+                    ],
+                    [
+                        "alt" => 'Mobifone',
+                        "image" => "doitac/ico_mobifone.png",
+                        "image2x" => "doitac/ico_mobifone@2x.png",
+                    ]
+                ];
+            
+                if ( $doitacList ): ?>
+                    <div class="swiper-container js-doitac-slide">
+                        <div class="swiper-wrapper">
+                        <?php
+                            foreach ($doitacList as $value): ?>
+                                <div class="swiper-slide">
+                                <img srcset="<?php echo PAS ?>/assets/img/<?php echo $value['image'] ?>, <?php echo PAS ?>/assets/img/<?php echo $value['image2x'] ?> 2x" src="<?php echo PAS ?>/assets/img/<?php echo $value['image2x'] ?>" alt="<?php echo $value['alt'] ?>">
 
+                                </div>
+                            <?php
+                            endforeach;
+                            ?>
+                        </div>
+                    </div>
+                <?php
+                endif;
+                ?>
+        </div>
     </div>
 </section>
 <section class="c-tintuc">
