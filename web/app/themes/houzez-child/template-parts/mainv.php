@@ -7,7 +7,9 @@
                 <div class="swiper-wrapper">
                     <?php foreach ($banners as $banner) { ?>
                         <div class="swiper-slide">
-                            <img class="mainv__image" src="<?= $banner['image']; ?>" width="1980" height="1042" alt="">
+                            <div class="mainv__image">
+                                <img class="" src="<?= $banner['image']; ?>" width="1980" height="1042" alt="">
+                            </div>
                         </div>
                     <?php } ?>
                 </div>

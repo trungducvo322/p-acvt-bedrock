@@ -41,7 +41,7 @@ Template Name: Trang chủ
             ];
             $propertyListHot = new WP_Query( $args );
             ?>
-            <div class="c-postNews-grid c-postNews-gridSpecial">
+            <div class="c-postNews-grid c-postNews-gridSpecial c-gridNewPost__pcview">
             <?php
             if ( $propertyListHot->have_posts() ):
                 while ( $propertyListHot->have_posts() ):
@@ -56,13 +56,58 @@ Template Name: Trang chủ
                 while ( $propertyListNew->have_posts() ):
                     $propertyListNew->the_post();
                     get_template_part('page/views/postViewPropertyItem', '', [
-                        'label' => 'label-news'
+                        'label' => 'label-new'
                     ]);
                 endwhile;
 
             endif;
 
             ?>
+            </div>
+
+            <div class="c-gridNewPost__spview">
+                <div class="c-gridNewPost__spviewHot">
+                    <?php
+                    if ( $propertyListHot->have_posts() ): ?>
+                    <div class="swiper-container js-propertyNew-slide">
+                        <div class="swiper-wrapper">
+                        <?php
+                            while ( $propertyListHot->have_posts() ):
+                                $propertyListHot->the_post();
+                                echo "<div class=\"swiper-slide\">";
+                                get_template_part('page/views/postViewPropertyItem', '', [
+                                    'label' => 'label-hot'
+                                ]);
+                                echo "</div>";
+                            endwhile;
+                        ?>
+                        </div>
+                    </div>
+                    <?php
+                    endif;
+                    ?>
+                </div>
+                <div class="c-gridNewPost__spviewNew">
+                    <?php
+                    if ( $propertyListNew->have_posts() ): ?>
+                    <div class="swiper-container js-propertyNew-slide">
+                        <div class="swiper-wrapper">
+                        <?php
+                            while ( $propertyListNew->have_posts() ):
+                                $propertyListNew->the_post();
+                                echo "<div class=\"swiper-slide\">";
+                                get_template_part('page/views/postViewPropertyItem', '', [
+                                    'label' => 'label-new'
+                                ]);
+                                echo "</div>";
+                            endwhile;
+                        ?>
+                        </div>
+                    </div>
+                    <?php
+                    endif;
+                    ?>
+                </div>
             </div>
         </div>
     </div>
@@ -105,7 +150,7 @@ Template Name: Trang chủ
                         <div class="icon">
                             <img src="<?php echo PAS ?>/assets/img/ico/ico_tra-sua.svg" alt="<?php echo $value->name ?>">
                         </div>
-                        <div class=""><?php echo $value->name ?></div>
+                        <div class=""><?php echo  str_replace("Du Lịch", "DL", $value->name); ?></div>
                     </li>
                 <?php endforeach; ?>
             </ul>

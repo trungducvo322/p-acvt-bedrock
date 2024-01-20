@@ -349,7 +349,7 @@ if ($('.js-tintuc-slide').length > 0) {
     });
 }
 
-//top tin tuc
+//top doi tac
 if ($('.js-doitac-slide').length > 0) {
     var topCommentSlider = new Swiper('.js-doitac-slide', {
         slidesPerView: 'auto',
@@ -374,6 +374,30 @@ if ($('.js-doitac-slide').length > 0) {
                 slidesPerGroup: 1,
                 spaceBetween: 36,
             }
+        }
+    });
+}
+
+//top doi tac
+if ($('.js-propertyNew-slide').length > 0) {
+    var topCommentSlider = new Swiper('.js-propertyNew-slide', {
+        slidesPerView: 1.2,
+        slidesPerGroup: 1,
+        spaceBetween: 32,
+        // centeredSlides: true,
+        navigation: {
+            // nextEl: '.grid-container__comment .swiper-button-next',
+            // prevEl: '.grid-container__comment .swiper-button-prev',
+        },
+        autoplay: {
+            delay: 3000,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2.2,
+                slidesPerGroup: 1,
+                spaceBetween: 36,
+            },
         }
     });
 }
