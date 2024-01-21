@@ -486,6 +486,12 @@ if ($('.js-propertyTab').length > 0) {
 
 }
 
+/**
+ * 
+ * Post type: post
+ * Page tin-tuc
+ */
+
 // ajax Page "tin tuc" tab
 
 if ($('.js-newsTab').length > 0) {
@@ -501,6 +507,7 @@ if ($('.js-newsTab').length > 0) {
     parrentDOM.find('.js-newsTab__each').removeClass('is-active');
     $(this).addClass('is-active');
 
+    toogleTabNews($(this).html());
     newsTabAjax(cate_id, catContentDOM);
 
 
@@ -560,6 +567,41 @@ if ($('.js-newsTab').length > 0) {
     return false;
   }
 }
+
+// js-tabNews-current
+
+if ($('.js-tabNews-current').length > 0) {
+
+    $('.js-tabNews-current').on('click touch', function() {
+
+        toogleTabNews();
+        return false;
+    })
+
+}
+
+function toogleTabNews(name = 0) {
+    if ($('.js-tabNews-current').length > 0) {
+
+        let zzz = $('.js-newsTab');
+
+        if (zzz.hasClass('is-active')) {
+            zzz.removeClass('is-active');
+        } else {
+            zzz.addClass('is-active');
+        }
+
+        if (name) {
+            $('.js-tabNews-current').html(name);
+        }
+    }
+    
+}
+
+
+/**
+ *  - End
+ */
 
 // tooltip 
 

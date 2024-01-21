@@ -18,7 +18,7 @@ Template Name: Tin tức
         ]
     ]
 ?>
-<div class="">
+<div class="l-container">
     <?php get_template_part('page/views/breadcrumbsView', '' , [ 'breadcrumbs_list' => $breadcrumbs]) ?>
 </div>
 
@@ -64,28 +64,32 @@ Template Name: Tin tức
 
 <section class="c-pagePostNews-categories">
     <div class="l-container">
-        <div class="c-pagePostNews-categories-header">
-            <h2 class="c-titleStyle2">DANH MỤC</h2>
-        </div>
-        
-        <ul class="c-pagePostNews-categories-tab js-newsTab">
-            <?php
-                $categories = get_categories();
-                if (!empty( $categories )): ?>
-                    <li class="c-pagePostNews-categories-tab__each js-newsTab__each is-active" data-tab-id="-1" data-tab-content="js-post-news-content">
-                        <span>Tất cả</span>
-                    </li>
-                    <?php                    
-                    foreach ($categories as $key => $category): ?>
-                        <li class="c-pagePostNews-categories-tab__each js-newsTab__each" data-tab-id="<?php echo $category->term_id ?>" data-tab-content="js-post-news-content">
-                            <span><?php echo $category->name ?></span>
-                        </li>
+        <div class="c-pagePostNews-categories-headerBox">
+            <div class="c-pagePostNews-categories-header">
+                <h2 class="c-titleStyle2">DANH MỤC</h2>
+            </div>
+            <div class="c-pagePostNews-categories-tabContainer">
+                <div class="js-tabNews-current">Tất cả</div>
+                <ul class="c-pagePostNews-categories-tab js-newsTab">
                     <?php
-                    endforeach;
-                endif;
-            ?>
-        </ul>
-        <div class="c-pagePostNews-categories-box" id="js-post-news-content">
+                        $categories = get_categories();
+                        if (!empty( $categories )): ?>
+                            <li class="c-pagePostNews-categories-tab__each js-newsTab__each is-active" data-tab-id="-1" data-tab-content="js-post-news-content">
+                                <span>Tất cả</span>
+                            </li>
+                            <?php                    
+                            foreach ($categories as $key => $category): ?>
+                                <li class="c-pagePostNews-categories-tab__each js-newsTab__each" data-tab-id="<?php echo $category->term_id ?>" data-tab-content="js-post-news-content">
+                                    <span><?php echo $category->name ?></span>
+                                </li>
+                            <?php
+                            endforeach;
+                        endif;
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <div class="c-pagePostNews-categories-box mt-50 mt-s-30" id="js-post-news-content">
             <?php
 
                 $args = array(
@@ -113,4 +117,12 @@ Template Name: Tin tức
         </div>
     </div>
 </section>
+<div class="c-banner">
+	<div class="l-container">
+		<div class="c-banner-item">
+			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
+		</div> 
+	</div>
+</div>
+
 <?php get_footer(); ?>

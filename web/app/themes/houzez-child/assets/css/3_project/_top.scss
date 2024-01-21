@@ -482,7 +482,7 @@
 
         .swiper-wrapper {
             justify-content: center;
-            @include media-query ('m') {
+            @include media-query ('xl') {
                 justify-content: flex-start;
             }
         }
