@@ -170,7 +170,7 @@
 
         @include media-query('s') {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-
+            gap: 16px;
         }
     }
 
@@ -259,6 +259,12 @@
                 width: 47px;
                 height: 54px;   
                 background-image: url("../img/ico/ico_label-new.png");
+                background-size: contain;
+
+                @include media-query ('s') {
+                    height: 40px;
+                    width: 35px;
+                }
             }
         }
     
@@ -274,6 +280,12 @@
                 width: 48px;
                 height: 55px;   
                 background-image: url("../img/ico/ico_label-hot.png");
+                background-size: contain;
+
+                @include media-query ('s') {
+                    height: 40px;
+                    width: 35px;
+                }
             }
         }
     }

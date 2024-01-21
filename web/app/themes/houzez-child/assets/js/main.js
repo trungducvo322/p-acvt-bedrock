@@ -353,37 +353,30 @@ if ($('.js-tintuc-slide').length > 0) {
 if ($('.js-doitac-slide').length > 0) {
     var topCommentSlider = new Swiper('.js-doitac-slide', {
         slidesPerView: 'auto',
-        slidesPerGroup: 1,
+        // slidesPerView: 1,
         spaceBetween: 32,
-        // centeredSlides: true,
         navigation: {
             // nextEl: '.grid-container__comment .swiper-button-next',
             // prevEl: '.grid-container__comment .swiper-button-prev',
         },
+        loop: true,
         autoplay: {
             delay: 3000,
         },
         breakpoints: {
             768: {
-                // slidesPerView: 6.1,
-                slidesPerGroup: 1,
-                spaceBetween: 36,
-            },
-            1024: {
-                // slidesPerView: '7.8',
-                slidesPerGroup: 1,
                 spaceBetween: 36,
             }
         }
     });
 }
 
-//top doi tac
+//top propertyNew
 if ($('.js-propertyNew-slide').length > 0) {
     var topCommentSlider = new Swiper('.js-propertyNew-slide', {
         slidesPerView: 1.2,
         slidesPerGroup: 1,
-        spaceBetween: 32,
+        spaceBetween: 16,
         // centeredSlides: true,
         navigation: {
             // nextEl: '.grid-container__comment .swiper-button-next',
@@ -475,6 +468,22 @@ if ($('.js-propertyTab').length > 0) {
 
     return false;
   }
+
+  // tab slide 
+
+  if ($('.js-propertyTab-slider').length > 0) {
+    var topCommentSlider = new Swiper('.js-propertyTab-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        centeredSlides: false,
+        breakpoints: {
+            768: {
+                // centeredSlides: true,
+            }
+        }
+    });
+}
+
 }
 
 // ajax Page "tin tuc" tab

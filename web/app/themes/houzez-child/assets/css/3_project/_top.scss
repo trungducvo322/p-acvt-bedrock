@@ -124,9 +124,17 @@
 
 .mainv {
     &__inner {
+        --swiper-pagination-bullet-height: 13px;
+        --swiper-pagination-bullet-width: 13px;
         width: 100%;
         // padding-bottom: 56.25%;
         position: relative;
+
+        @include media-query ('s') {
+            --swiper-pagination-bullet-height: 10px;
+            --swiper-pagination-bullet-width: 10px;    
+            --swiper-pagination-top: 100%;
+        }
     }
 
     &__imageBox {
@@ -161,6 +169,46 @@
 
     &__spview {
         display: none !important;
+
+        @include media-query('s') {
+            &Hot {
+                .each-image {
+                    padding-bottom: calc(81.25% * 100% /  (2 * 100% + 10% )) !important;
+                }
+            }
+        }
+
+        &New {
+            padding-top: 45px;
+
+            .c-postNews__each {
+                display: grid;
+                grid-template-columns: 36fr 64fr;
+                grid-template-rows: 60px auto auto auto;
+                gap: 10px 16px;
+
+                .each-image {
+                    grid-row: span 2;
+                    height: 100%;
+                    padding-bottom: 0;
+                }
+
+                .each-title {
+                    h3 {
+                        -webkit-line-clamp: 2;
+                    }
+                }
+
+                .each-description {
+                    padding-top: 0;
+                }
+
+                .each-address, .each-property-types {
+                    grid-column: span 2;
+                    margin-top: 0;
+                }
+            }
+        }
     }
 
     @include media-query ('m') {
@@ -176,16 +224,10 @@
 }
 
 .c-gridPost {
-    margin-top: 50px;
     padding-top: 50px;
-    padding-bottom: 50px;
 
-    @include media-query ('s') {
-        padding-bottom: 25px;
-    }
-
-    &-content {
-        margin-top: 50px;
+    @include media-query('s') {
+        padding-top: 10px;
     }
 
     &-tab {
@@ -195,18 +237,25 @@
         display: flex; 
         justify-content: center;
         min-height: 100px;
-        overflow: auto;
-
-        @include media-query ("m") {
-            justify-content: flex-start;
-        }
         
         @include media-query ("s") {
             min-height: 65px;
         }
 
-        li {
-            padding: 12px 5px;
+        .swiper-wrapper {
+            justify-content: center;
+
+            @include media-query ("m") {
+                justify-content: flex-start;
+            }
+        }
+
+        .swiper-slide {
+            width: min-content;
+        }
+
+        &__each {
+            padding: 10px 5px 5px;
             text-align: center;
             min-width: 156px;
             cursor: pointer;
@@ -253,13 +302,28 @@
     }
 
     &-tabcontent {
-        .c-postNews-grid {
-            row-gap: 0;
-        }
+        border-bottom: 2px solid $gray_color;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 36px;
+        padding-bottom: 50px;
         
-        .c-postNews__each {
-            padding-bottom: 30px;
+        @include media-query ('s') {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            padding-bottom: 20px;
+        }
 
+        &-left {
+            grid-column: span 3;
+        }
+
+        &-right {
+            @include media-query ('s') {
+                display: none;
+            }
+        }
+
+        .c-postNews__each {
             .each-title {
                 h3 {
                     -webkit-line-clamp: 1;
@@ -270,10 +334,8 @@
         &__pagi {
             margin-top: 50px;
             padding: 50px 0;
-            width: 75%;
 
             @include media-query ('s') {
-                width: 100%;
                 margin-top: 25px;
                 padding: 25px 0;
             }
@@ -281,23 +343,25 @@
     }
 
     .banner {
-        padding: 20px;
         border: 1px solid #DEDEDE;
         background: #F3F3F3;
-        grid-row: span 2;
-        grid-column-start: 4;
+        grid-column: span 2;
+        display: none;
+        padding: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
 
         @include media-query ("s") {
-            grid-row: auto;
-            grid-column: 1 / span 2;
+            display: grid;
+        }
+    }
 
-            &:nth-of-type(4) {
-                grid-row-start: 4;
-            }
+    .bannerSide {
+        border: 1px solid #DEDEDE;
+        background: #F3F3F3;
 
-            &:nth-of-type(11) {
-                grid-row-start: 8;
-            }
+        &-item {
+            padding: 20px;
         }
     }
 }
@@ -309,6 +373,7 @@
 
     @include media-query ("s") {
         padding-top: 30px;
+        padding-bottom: 50px;
     }
 
     &-header {
@@ -395,6 +460,10 @@
     padding-top: 50px;
     padding-bottom: 50px;
 
+    @include media-query ("s") {
+        padding-bottom: 35px;
+    }
+
     &-box {
         .swiper-slide {
             display: flex;
@@ -404,6 +473,17 @@
             
             img {
                 height: 64px;
+
+                @include media-query ('s') {
+                    height: 50px;
+                }
+            }
+        }
+
+        .swiper-wrapper {
+            justify-content: center;
+            @include media-query ('m') {
+                justify-content: flex-start;
             }
         }
     }
@@ -412,22 +492,69 @@
 .c-tintuc {
     padding-top: 50px;
     padding-bottom: 100px;
+    
+    @include media-query ("s") {
+        padding-top: 25px;
+        padding-bottom: 50px ;
+    }
 
     &-header {
         position: relative;
 
         &__xemthem {
             position: absolute;
-            bottom: 10px;
+            bottom: 5px;
             right: 0;
             font-size: 18px;
             font-weight: 600;            
             text-decoration-line: underline;
             color: $gray_color;
+
+            @include media-query ('s') {
+                display: none;
+            }
         }
     }
 
     &-box {
         margin-top: 50px;
+    }
+
+    &-bottom {
+        padding-top: 30px;
+
+        &__xemthem {
+            font-size: 18px;
+            font-weight: 600;            
+            text-decoration-line: underline;
+            color: $gray_color;
+            display: none;
+            text-align: center;
+
+            @include media-query ('s') {
+                display: block;
+            }
+        }
+    }
+}
+
+.c-banner {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .l-container {
+        max-width: 1500px;
+        padding: 0;
+    }
+
+    @include media-query ('s') {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
+    &-item {
+        img {
+            width: 100%;
+        }
     }
 }

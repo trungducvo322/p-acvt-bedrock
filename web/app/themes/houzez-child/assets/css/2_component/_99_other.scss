@@ -155,7 +155,7 @@ main {
 
 @include media-query ('s') {
     .mt-s-30 {
-        margin-top: 30px;
+        margin-top: 30px !important;
     }
 }
 

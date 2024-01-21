@@ -8,8 +8,17 @@ $label = isset($args['label']) ? $args['label'] : '';
 $totalPage = $propertyList->max_num_pages;
 $count = 0;
 
+$banner = [
+    "assets/img/banner/img_banner-side1.jpg",
+    "assets/img/banner/img_banner-side2.jpg",
+    "assets/img/banner/img_banner-side3.jpg",
+    "assets/img/banner/img_banner-side4.jpg",
+];
+
+$banner_index = 0;
+
 ?>
-<div class="c-postNews-grid c-postNews-grid4">
+<div class="c-postNews-grid c-postNews-grid3">
 <?php
     $totalPage = $propertyList->max_num_pages;
     $count = 0;
@@ -19,8 +28,13 @@ $count = 0;
         get_template_part('page/views/postViewPropertyItem', '', [
             'label' => $label
         ]);
-        if ($count % 6 == 3) {
-            get_template_part('page/views/postViewPropertyBanner');
+        if ($count % 6 == 0) {
+            get_template_part('page/views/postViewPropertyBannerSP', '' , [
+                'list-banner' => [
+                    $banner[$banner_index++],
+                    $banner[$banner_index++],
+                ]
+            ]);
         }
     endwhile;
 ?>
@@ -36,5 +50,5 @@ $count = 0;
         <?php 
         endif;
     ?>
-    <div class="c-postNews-pagi__pagiPage">Trang <input type="text" name="page" class="c-postNews-pagi__pagiInput js-pagi-page" value="<?php echo $page ?>">/<?php echo $totalPage ?></div>
+    <div class="c-postNews-pagi__pagiPage">Trang <input type="text" name="page" class="c-postNews-pagi__pagiInput js-pagi-page" value="<?php echo $page ?>">/ <?php echo $totalPage ?></div>
 </div>

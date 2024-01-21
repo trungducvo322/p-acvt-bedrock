@@ -123,13 +123,20 @@ Template Name: Trang chủ
         </div>
     </div>
 </section>
+<div class="c-banner">
+	<div class="l-container">
+		<div class="c-banner-item">
+			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong1.jpg" alt="">
+		</div> 
+	</div>
+</div>
 <section class="c-gridPost">
     <div class="l-container">
         <div class="c-gridPost-header">
             <h2 class="c-titleStyle1">KHÁM PHÁ VŨNG TÀU</h2>
         </div>
     </div>
-    <div class="c-gridPost-content">
+    <div class="c-gridPost-content mt-50 mt-s-30">
         <?php
             $terms = get_terms( array(
                 'taxonomy'   => 'property_type',
@@ -155,39 +162,52 @@ Template Name: Trang chủ
 
         ?>
         <?php if (have_posts($terms)): ?>
-            <ul class="c-gridPost-tab js-propertyTab">
-                <?php foreach ($terms as $key => $value): ?>
-                    <li class="js-propertyTab__each <?php echo $key == 0 ? 'is-active' : '' ?> " data-tab-id="<?php echo $value->term_id ?>" data-tab-content="js-property-content">
-                        <div class="icon">
-                            <img src="<?php echo PAS ?>/assets/img/ico/ico_tra-sua.svg" alt="<?php echo $value->name ?>">
-                        </div>
-                        <div class=""><?php echo  str_replace("Du Lịch", "DL", $value->name); ?></div>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            <div class="c-gridPost-tab js-propertyTab swiper-container js-propertyTab-slider">
+				<div class="swiper-wrapper">
+					<?php foreach ($terms as $key => $value): ?>
+						<div class="swiper-slide">
+							<div class="js-propertyTab__each c-gridPost-tab__each <?php echo $key == 0 ? 'is-active' : '' ?> " data-tab-id="<?php echo $value->term_id ?>" data-tab-content="js-property-content">
+								<div class="icon">
+									<img src="<?php echo PAS ?>/assets/img/ico/ico_tra-sua.svg" alt="<?php echo $value->name ?>">
+								</div>
+								<div class=""><?php echo  str_replace("Du Lịch", "DL", $value->name); ?></div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
         <?php endif; ?>
-        <div class="c-gridPost-tabcontent">
-            <div class="l-container">
+		<div class="l-container">
+        	<div class="c-gridPost-tabcontent mt-50 mt-s-30">
             <?php
-            if ( $propertyList->have_posts() ): ?>
-            <div id="js-property-content">
-                <?php get_template_part('page/views/postViewPropertyTab', '', [ 
-                    'propertyList' => $propertyList, 
-                    'term_id' => $defaultTerm,
-                    'page' => 1
-                    ]); ?>
-            </div>
-            <?php
-            endif;
-            wp_reset_postdata();
-            ?>
-
+				if ( $propertyList->have_posts() ): ?>
+				<div id="js-property-content" class="c-gridPost-tabcontent-left">
+					<?php get_template_part('page/views/postViewPropertyTab', '', [ 
+						'propertyList' => $propertyList, 
+						'term_id' => $defaultTerm,
+						'page' => 1
+						]); ?>
+				</div>
+				<?php
+				endif;
+				wp_reset_postdata();
+			?>
+				<div class="c-gridPost-tabcontent-right">
+					<?php get_template_part('page/views/postViewPropertyBanner') ?>
+				</div>
             </div>
         </div>
     </div>
 
 </section>
-
+<div class="c-banner">
+	<div class="l-container">
+		
+		<div class="c-banner-item">
+			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
+		</div> 
+	</div>
+</div>
 <section class="c-comment">
     <div class="l-container">
     <div class="c-comment-header">
@@ -301,6 +321,7 @@ Template Name: Trang chủ
                                 </div>
                             <?php
                             endforeach;
+
                             ?>
                         </div>
                     </div>
@@ -332,7 +353,7 @@ Template Name: Trang chủ
                     while ( $postList->have_posts() ):
                         $postList->the_post();
                         echo "<div class=\"swiper-slide\">";
-                        get_template_part('page/views/postViewNews');
+                        get_template_part('page/views/postViewNewsItem');
                         echo "</div>";
                     endwhile;
                 ?>
@@ -342,8 +363,10 @@ Template Name: Trang chủ
             endif;
             ?>
         </div>
+		<div class="c-tintuc-bottom">
+			<a href="<?php echo home_url('/tin-tuc/') ?>" class="c-tintuc-bottom__xemthem">Xem thêm</a>
+		</div>
     </div>
 </section>
-
 
 <?php get_footer(); ?>
