@@ -204,6 +204,7 @@
         justify-content: center;
         position: relative;
         gap: 10px;
+        min-height: 50px;
 
         &__pagiBtn {
             background-color: $primary;
@@ -475,6 +476,7 @@
     &-wrap {
         width: 100%;
         overflow: auto;
+
     }
 
     &-list {
@@ -482,6 +484,7 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
         gap: 8px;
+        height: 100%;
 
         @include media-query('s') {
             display: inline-flex;

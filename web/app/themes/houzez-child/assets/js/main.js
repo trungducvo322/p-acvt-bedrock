@@ -477,6 +477,81 @@ if ($('.js-propertyTab').length > 0) {
   }
 }
 
+// ajax Page "tin tuc" tab
+
+if ($('.js-newsTab').length > 0) {
+    let tabBox = $('.js-newsTab');
+
+  $('.js-newsTab__each').on("click touch", tabBox, function(e) {
+    e.preventDefault();
+
+    let parrentDOM = $(this).closest('.js-newsTab');
+    let cate_id = $(this).data('tab-id');
+    let catContentDOM = $(this).data('tab-content');
+
+    parrentDOM.find('.js-newsTab__each').removeClass('is-active');
+    $(this).addClass('is-active');
+
+    newsTabAjax(cate_id, catContentDOM);
+
+
+  })
+
+  $(document).on('click touch', '.js-pagi2-change', function(e) {
+    e.preventDefault();
+
+    let parentDOM = $(this).closest('.js-newsTab__page');
+    let catContentDOM = parentDOM.data('tab-content');
+    let page = $(this).data('pagi');
+    let cate_id = parentDOM.data('tab-id');
+    window.scrollTo({top: $('#' + catContentDOM).offset().top - 150, behavior: 'smooth'});
+    newsTabAjax(cate_id, catContentDOM, page);
+    return false;
+
+  })
+
+  function newsTabAjax(cate_id, catContentID, page = 1) {
+
+    let catContentDOM = $('#' + catContentID);
+    catContentDOM.addClass('c-loading');
+
+    let process = $.ajax({
+        type: "post",
+        url: ajaxurl,
+        data: {
+            cate_id: cate_id,
+            cate_page: page,
+            action: "ajax_news_post"
+        },
+        dataType: "html",
+    
+    //   dataType: "json",
+    //   done: function (response) {
+        
+
+        // if (response.type == "success") {
+        //     console.log(response);
+        //     catContentDOM.html(response.content);
+        //     return false;
+        // }
+
+        // if (response.type == "empty") {
+
+        //   return false;
+        // }
+    //   },
+    });
+
+    process.then(function (response) {
+        catContentDOM.removeClass('c-loading');
+        catContentDOM.html(response);
+        return false;
+    })
+
+    return false;
+  }
+}
+
 // tooltip 
 
 function tooltipFunction(e) {

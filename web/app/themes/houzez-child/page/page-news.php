@@ -51,7 +51,7 @@ Template Name: Tin tức
                                 $template_data['column'] = 2;
                             }
                             
-                            get_template_part('page/views/postViewNews', '', $template_data);
+                            get_template_part('page/views/postViewNewsItem', '', $template_data);
                         endwhile;
                     endif;
                     wp_reset_postdata();
@@ -68,16 +68,16 @@ Template Name: Tin tức
             <h2 class="c-titleStyle2">DANH MỤC</h2>
         </div>
         
-        <ul class="c-pagePostNews-categories-tab">
+        <ul class="c-pagePostNews-categories-tab js-newsTab">
             <?php
                 $categories = get_categories();
                 if (!empty( $categories )): ?>
-                    <li class="c-pagePostNews-categories-tab__each" data-tab-id="-1">
+                    <li class="c-pagePostNews-categories-tab__each js-newsTab__each is-active" data-tab-id="-1" data-tab-content="js-post-news-content">
                         <span>Tất cả</span>
                     </li>
                     <?php                    
                     foreach ($categories as $key => $category): ?>
-                        <li class="c-pagePostNews-categories-tab__each" data-tab-id="<?php echo $category->term_id ?>">
+                        <li class="c-pagePostNews-categories-tab__each js-newsTab__each" data-tab-id="<?php echo $category->term_id ?>" data-tab-content="js-post-news-content">
                             <span><?php echo $category->name ?></span>
                         </li>
                     <?php
@@ -85,7 +85,7 @@ Template Name: Tin tức
                 endif;
             ?>
         </ul>
-        <div class="c-pagePostNews-categories-box">
+        <div class="c-pagePostNews-categories-box" id="js-post-news-content">
             <?php
 
                 $args = array(
@@ -100,12 +100,12 @@ Template Name: Tin tức
 
                 if ( $postsList->have_posts() ): ?>
                     <div class="c-pagePostNews-categories-content c-postNews">
-                        <?php
-                            while ( $postsList->have_posts() ):
-                                $postsList->the_post();
-                                get_template_part('page/views/postViewNews');
-                            endwhile;
-                        ?>
+                        <?php get_template_part('page/views/postViewNewTab', '', [ 
+                            'newsList' => $postsList,
+                            'class' => "c-pagePostNews-categories-list",
+                            'cat_id' => -1,
+                            "page" => 1
+                            ]) ?>
                     </div>
                     <?php
                 endif;
