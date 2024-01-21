@@ -52,7 +52,7 @@ $houzez_local = houzez_get_localization();
 	<header>
 		<div class="header__upper">
 			<div class="l-container">
-				<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex align-items-center">
 					<div class="header__logo">
 						<div class="header__logo">
 							<a href="<?= home_url('/'); ?>">
@@ -69,8 +69,22 @@ $houzez_local = houzez_get_localization();
 					</div>
 
 					<div class="header__nav">
-						<ul class="d-flex align-items-center">
-							<li>
+						<ul class="d-flex align-items-center header__navMain">
+							
+							<li class="header__navMenu">
+							<?php 
+								wp_nav_menu(array(
+									'menu_class' => "header__navList",
+									'container' => "ul",
+									'container_class' => "1",
+									'theme_location' => "main-menu",
+									'list_item_class'  => 'header__navItem',
+									'link_class'   => 'header__navLink',
+								));
+								?>
+							</li>
+
+							<li class="header__navSearch">
 								<a href="javascript:void(0)">
 									<?php echo do_shortcode('[ivory-search id="24241" title="Default Search Form"]'); ?>
 								</a>
@@ -83,16 +97,6 @@ $houzez_local = houzez_get_localization();
 							</li>
 						</ul>
 
-						<?php
-						wp_nav_menu(array(
-							'menu_class' => "header__navList",
-							'container' => "ul",
-							'container_class' => "1",
-							'theme_location' => "main-menu",
-							'list_item_class'  => 'header__navItem',
-							'link_class'   => 'header__navLink',
-						));
-						?>
 					</div>
 				</div>
 			</div>

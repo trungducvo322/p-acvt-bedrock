@@ -128,36 +128,47 @@ img {
   }
 }
 
-.header__nav li {
-  margin-right: 25px;
-}
-.header__nav li:last-child {
-  margin-right: 0;
+@media screen and (max-width: 1024px) {
+  li.header__navSearch {
+    margin-right: 25px;
+  }
 }
 
 .header__navList {
-  z-index: 9990;
-  position: fixed;
-  width: 400px;
-  max-width: 50%;
-  height: 100vh;
-  padding: 112px 40px;
-  background-color: #fff;
-  box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.2);
-  left: -100%;
-  top: 0;
-  transition: left 0.25s ease;
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 30px;
 }
-@media screen and (max-width: 768px), screen and (max-width: 737px) and (orientation: landscape) {
+@media screen and (max-width: 1024px) {
+  .header__navList {
+    display: block;
+    margin-right: 0;
+    z-index: 9990;
+    position: fixed;
+    width: 100%;
+    max-width: 100%;
+    padding: 112px 40px;
+    background-color: #fff;
+    box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.2);
+    left: 0%;
+    top: -110%;
+    transition: top 0.25s ease;
+  }
+}
+@media screen and (max-width: 1024px) and (max-width: 768px), screen and (max-width: 1024px) and (max-width: 737px) and (orientation: landscape) {
   .header__navList {
     padding: 50px 30px;
   }
 }
 
 .header__navItem {
-  margin-right: 30px;
-  margin-bottom: 30px;
   position: relative;
+}
+@media screen and (max-width: 1024px) {
+  .header__navItem {
+    margin-right: 30px;
+    margin-bottom: 30px;
+  }
 }
 .header__navItem:last-child {
   margin-right: 0;
@@ -171,28 +182,30 @@ img {
 
 .header__navLink {
   height: 44px;
-  font-size: 20px;
+  font-size: 19px;
   position: relative;
   color: #000;
 }
-.header__navLink::before {
-  content: "";
-  display: inline-block;
-  height: 1px;
-  width: 0%;
-  transition: width 0.12s ease-in;
-  background-color: var(--color-blue--900);
-  position: absolute;
-  left: auto;
-  right: 0;
-  bottom: 0;
+@media screen and (max-width: 1024px) {
+  .header__navLink::before {
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 0%;
+    transition: width 0.12s ease-in;
+    background-color: var(--color-blue--900);
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: 0;
+  }
+  .header__navLink:hover::before, .header__navLink--active::before {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
 }
-.header__navLink:hover::before, .header__navLink--active::before {
-  width: 100%;
-  left: 0;
-  right: auto;
-}
-@media screen and (max-width: 768px), screen and (max-width: 737px) and (orientation: landscape) {
+@media screen and (max-width: 1024px) and (max-width: 768px), screen and (max-width: 1024px) and (max-width: 737px) and (orientation: landscape) {
   .header__navLink {
     font-size: 17px;
   }
@@ -236,7 +249,7 @@ img {
 }
 
 .menu__button span {
-  width: 12px;
+  width: 18px;
   overflow: hidden;
   z-index: 1;
   color: var(--color-blue--900);
@@ -250,7 +263,7 @@ img {
 }
 
 .menu__button::after {
-  width: 6px;
+  width: 18px;
   z-index: 2;
   content: "";
   transform: translate(0, 5px);
@@ -271,7 +284,7 @@ img {
 }
 
 .header__navList--active {
-  left: 0%;
+  top: 0%;
 }
 
 .menu__button.active {
@@ -363,24 +376,131 @@ img {
 }
 
 .js-menu-icon {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  right: 0px;
-  font-weight: 700;
-  font-size: 20px;
-  z-index: 9;
-  top: 3px;
-  cursor: pointer;
-  transition: all 0.3s;
+  display: none;
 }
-.js-menu-icon.open-menu {
-  transform: scaleY(-1);
+@media screen and (max-width: 1024px) {
+  .js-menu-icon {
+    display: initial;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 0px;
+    font-weight: 700;
+    font-size: 20px;
+    z-index: 9;
+    top: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .js-menu-icon.open-menu {
+    transform: scaleY(-1);
+  }
 }
 
 .menu__slider .swiper-button-next.swiper-button-disabled,
 .menu__slider .swiper-button-prev.swiper-button-disabled {
   pointer-events: auto;
+}
+
+.header__nav {
+  width: 100%;
+}
+.header__nav .header__navMenu {
+  width: 100%;
+}
+.header__nav .menu__inner {
+  display: none;
+  width: 26px;
+  height: 22px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 1024px) {
+  .header__nav .menu__inner {
+    display: block;
+  }
+}
+.header__nav .menu__inner .menu__button {
+  width: 26px;
+  height: 22px;
+}
+.header__nav .menu__button span, .header__nav .menu__button::before, .header__nav .menu__button::after {
+  width: 26px;
+  border-radius: 4px;
+  height: 3px;
+}
+.header__nav .menu__button::before {
+  transform: translate(0, -8px);
+}
+.header__nav .menu__button::after {
+  transform: translate(0, 8px);
+}
+.header__nav .menu__button.active {
+  position: fixed;
+}
+.header__nav .menu__button.active::before {
+  transform: rotate(45deg);
+}
+.header__nav .menu__button.active::after {
+  transform: rotate(-45deg);
+}
+.header__nav ul {
+  margin-bottom: 0;
+}
+.header__nav .is-form-style.is-form-style-3 input.is-search-input {
+  border-right: 1px solid var(--color-gray-73) !important;
+  font-size: 19px !important;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .header__nav .is-form-style.is-form-style-3 input.is-search-input {
+    font-size: 14px !important;
+  }
+}
+.header__nav .is-form-style.is-form-style-3 label {
+  width: 100% !important;
+}
+.header__nav .is-search-form .is-search-input {
+  border-radius: 6px !important;
+  border-color: var(--color-gray-73) !important;
+  padding-left: 45px;
+  width: 320px;
+  height: 54px;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .header__nav .is-search-form .is-search-input {
+    height: 36px;
+    width: 100%;
+    padding-left: 30px;
+  }
+}
+.header__nav .is-search-form .is-search-submit {
+  position: absolute !important;
+  left: 5px;
+  top: 10px;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .header__nav .is-search-form .is-search-submit {
+    top: 0;
+    left: 0;
+  }
+}
+.header__nav .is-search-form .is-search-submit .is-search-icon {
+  background: unset;
+  border: unset;
+}
+.header__nav .is-search-form label {
+  width: 100% !important;
+}
+
+.header__logo {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .header__logo {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .c-footer {
