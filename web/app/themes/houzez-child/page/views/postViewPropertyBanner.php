@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     $banners = [
         "assets/img/banner/img_banner-side1.jpg",
@@ -10,14 +10,16 @@
 ?>
 
 <div class="bannerSide">
-    <?php 
-        if (!empty($banners)): 
+    <?php
+        if (!empty($banners)):
             foreach ($banners as $key => $banner): ?>
                 <div class="bannerSide-item">
-                    <img src="<?php echo PAS . $banner ?>" alt="">
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        <img src="<?php echo PAS . $banner ?>" alt="">
+                    </a>
                 </div>
             <?php
-            endforeach;        
+            endforeach;
         endif;
     ?>
 </div>

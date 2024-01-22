@@ -4,9 +4,9 @@ Template Name: Tin tức
 */
 ?>
 
-<?php 
-    get_header(); 
-    $not__in = []; 
+<?php
+    get_header();
+    $not__in = [];
     $breadcrumbs = [
         [
             'url' => home_url(),
@@ -38,7 +38,7 @@ Template Name: Tin tức
                         'order' => 'DESC',
                         'post__not_in' => $not__in
                     );
-        
+
                     $newPosts = new WP_Query($args);
                     if ($newPosts->have_posts()):
                         $count = 0;
@@ -50,7 +50,7 @@ Template Name: Tin tức
                             if ($count == 1) {
                                 $template_data['column'] = 2;
                             }
-                            
+
                             get_template_part('page/views/postViewNewsItem', '', $template_data);
                         endwhile;
                     endif;
@@ -77,7 +77,7 @@ Template Name: Tin tức
                             <li class="c-pagePostNews-categories-tab__each js-newsTab__each is-active" data-tab-id="-1" data-tab-content="js-post-news-content">
                                 <span>Tất cả</span>
                             </li>
-                            <?php                    
+                            <?php
                             foreach ($categories as $key => $category): ?>
                                 <li class="c-pagePostNews-categories-tab__each js-newsTab__each" data-tab-id="<?php echo $category->term_id ?>" data-tab-content="js-post-news-content">
                                     <span><?php echo $category->name ?></span>
@@ -104,7 +104,7 @@ Template Name: Tin tức
 
                 if ( $postsList->have_posts() ): ?>
                     <div class="c-pagePostNews-categories-content c-postNews">
-                        <?php get_template_part('page/views/postViewNewTab', '', [ 
+                        <?php get_template_part('page/views/postViewNewTab', '', [
                             'newsList' => $postsList,
                             'class' => "c-pagePostNews-categories-list",
                             'cat_id' => -1,
@@ -118,10 +118,10 @@ Template Name: Tin tức
     </div>
 </section>
 <div class="c-banner">
-	<div class="l-container">
+	<div class="l-container-sp--full">
 		<div class="c-banner-item">
 			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
-		</div> 
+		</div>
 	</div>
 </div>
 

@@ -50,6 +50,11 @@ main {
 
 .l-container {
 	@extend %container;
+
+  &-sp--full {
+    max-width: $con_width2 + 30px;
+    padding: 0;
+  }
 }
 
 .l-container2 {

@@ -24,7 +24,7 @@ Template Name: Trang chủ
                         'field' => 'term_id',
                         'operator' => 'NOT IN'
                     )
-                ),            
+                ),
             ];
             $propertyListNew = new WP_Query( $args );
 
@@ -37,7 +37,7 @@ Template Name: Trang chủ
                         'terms' => '30',
                         'field' => 'term_id',
                     )
-                ),            
+                ),
             ];
             $propertyListHot = new WP_Query( $args );
             ?>
@@ -124,10 +124,10 @@ Template Name: Trang chủ
     </div>
 </section>
 <div class="c-banner">
-	<div class="l-container">
+	<div class="l-container-sp--full">
 		<div class="c-banner-item">
 			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong1.jpg" alt="">
-		</div> 
+		</div>
 	</div>
 </div>
 <section class="c-gridPost">
@@ -156,7 +156,7 @@ Template Name: Trang chủ
                         'field' => 'term_id',
                     )
                 ),
-            
+
             ];
             $propertyList = new WP_Query( $args );
 
@@ -182,8 +182,8 @@ Template Name: Trang chủ
             <?php
 				if ( $propertyList->have_posts() ): ?>
 				<div id="js-property-content" class="c-gridPost-tabcontent-left">
-					<?php get_template_part('page/views/postViewPropertyTab', '', [ 
-						'propertyList' => $propertyList, 
+					<?php get_template_part('page/views/postViewPropertyTab', '', [
+						'propertyList' => $propertyList,
 						'term_id' => $defaultTerm,
 						'page' => 1
 						]); ?>
@@ -201,11 +201,11 @@ Template Name: Trang chủ
 
 </section>
 <div class="c-banner">
-	<div class="l-container">
-		
+	<div class="l-container-sp--full">
+
 		<div class="c-banner-item">
 			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
-		</div> 
+		</div>
 	</div>
 </div>
 <section class="c-comment">
@@ -266,7 +266,7 @@ Template Name: Trang chủ
             <h2 class="c-titleStyle2">ĐỐI TÁC</h2>
         </div>
         <div class="c-doitac-box mt-50 mt-s-30">
-            <?php 
+            <?php
                 $doitacList = [
                     [
                         "alt" => 'Cellphone S',
@@ -309,7 +309,7 @@ Template Name: Trang chủ
                         "image2x" => "doitac/ico_mobifone@2x.png",
                     ]
                 ];
-            
+
                 if ( $doitacList ): ?>
                     <div class="swiper-container js-doitac-slide">
                         <div class="swiper-wrapper">
@@ -336,7 +336,7 @@ Template Name: Trang chủ
         <?php
             $args = [
                 'post_type' => 'post',
-                'posts_per_page' => 4
+                'posts_per_page' => 8
             ];
             $postList = new WP_Query( $args );
         ?>
