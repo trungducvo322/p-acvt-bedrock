@@ -90,7 +90,7 @@
                 <div class="c-propertyAddress-address">
                     <?php echo !empty($address) ? $address : '' ?>
                 </div>
-                <a href="" target="_blank" rel="noopener noreferrer" class="c-propertyAddress-map">Xem bản đồ</a>
+                <!-- <a href="" target="_blank" rel="noopener noreferrer" class="c-propertyAddress-map">Xem bản đồ</a> -->
             </div>
             <div class="c-single-infoShare">
                 <?php get_template_part('page/views/singleShare') ?>
@@ -146,12 +146,19 @@
                         <?php get_template_part('page/views/singleInfo') ?>  
 
                     </div>
+
+                    <div class="location__share">
+                        <?php get_template_part('page/views/singleShare') ?>
+                    </div>
                 </div>
                 <!-- side bar  -->
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-3 col-12 c-singleSidebar">
                     <div class="location__statistic mt-s-30">
                         <h4 class="title-small">Liên hệ chúng tôi</h4>
                         <?php get_sidebar('property'); ?>
+                    </div>
+                    <div class="c-singleSidebar-banner">
+                        <?php get_template_part('page/views/postViewPropertyBanner') ?>
                     </div>
                 </div>
             </div>
@@ -159,11 +166,21 @@
     </div>
 </section>
 
+<div class="c-banner">
+	<div class="l-container-sp--full">
+		<div class="c-banner-item">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <img src="<?php echo PAS ?>assets/img/banner/img_bannerLong1.jpg" alt="">                
+            </a>
+		</div>
+	</div>
+</div>
+
 <section class="others c-singleRetated">
     <div class="l-container">
         <div class="others__inner">
             <h2 class="c-titleStyle2">Các địa điểm khác</h2>
-            <div class="">
+            <div class="mt-50 mt-s-30">
                 <?php
                 $args = array(
                     'post_type' => 'property',

@@ -361,8 +361,9 @@ if ($('.js-doitac-slide').length > 0) {
         },
         loop: true,
         autoplay: {
-            delay: 3000,
+            delay: 2000,
         },
+        speed: 3000,
         breakpoints: {
             768: {
                 spaceBetween: 36,
@@ -442,10 +443,10 @@ if ($('.js-propertyTab').length > 0) {
             action: "ajax_property_loaihinh"
         },
         dataType: "html",
-
+    
     //   dataType: "json",
     //   done: function (response) {
-
+        
 
         // if (response.type == "success") {
         //     console.log(response);
@@ -469,7 +470,7 @@ if ($('.js-propertyTab').length > 0) {
     return false;
   }
 
-  // tab slide
+  // tab slide 
 
   if ($('.js-propertyTab-slider').length > 0) {
     var topCommentSlider = new Swiper('.js-propertyTab-slider', {
@@ -487,7 +488,7 @@ if ($('.js-propertyTab').length > 0) {
 }
 
 /**
- *
+ * 
  * Post type: post
  * Page tin-tuc
  */
@@ -540,10 +541,10 @@ if ($('.js-newsTab').length > 0) {
             action: "ajax_news_post"
         },
         dataType: "html",
-
+    
     //   dataType: "json",
     //   done: function (response) {
-
+        
 
         // if (response.type == "success") {
         //     console.log(response);
@@ -595,7 +596,7 @@ function toogleTabNews(name = 0) {
             $('.js-tabNews-current').html(name);
         }
     }
-
+    
 }
 
 
@@ -603,29 +604,49 @@ function toogleTabNews(name = 0) {
  *  - End
  */
 
-// tooltip
+
+// Page - tin tuc
+
+$(function(){
+    let mySwiper;
+    const breakpoint = window.matchMedia( '(min-width:681px)' );
+    const breakpointChecker = function() {
+        if ( breakpoint.matches === true ) {
+            if ( mySwiper !== undefined ) mySwiper.destroy( true, true );
+            return;
+            } else if ( breakpoint.matches === false ) {
+                return enableSwiper();
+            }
+        };
+      
+    const enableSwiper = function() {
+
+        mySwiper = new Swiper ('.js-pagenews-slide', {
+            slidesPerView: 1.1,
+            spaceBetween: 25,
+        });
+    
+        };
+        
+    breakpoint.addListener(breakpointChecker);
+
+    breakpointChecker();
+      
+})
+
+// tooltip 
 
 function tooltipFunction(e) {
 
     var copyURL = $('#myTooltipData').data('url');
 
     navigator.clipboard.writeText(copyURL);
-
+    
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copied";
   }
-
+  
   function tooltipOutFunc() {
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copy to clipboard";
   }
-
-// Share button
-
-$('.fbsharelink').on('click touch', function()
-{
-    var shareurl = $(this).data('shareurl');
-    window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareurl)+'&t='+document.title, '',
-    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
-    return false;
-});

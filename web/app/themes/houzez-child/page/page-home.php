@@ -126,7 +126,9 @@ Template Name: Trang chủ
 <div class="c-banner">
 	<div class="l-container-sp--full">
 		<div class="c-banner-item">
-			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong1.jpg" alt="">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <img src="<?php echo PAS ?>assets/img/banner/img_bannerLong1.jpg" alt="">                
+            </a>
 		</div>
 	</div>
 </div>
@@ -164,11 +166,14 @@ Template Name: Trang chủ
         <?php if (have_posts($terms)): ?>
             <div class="c-gridPost-tab js-propertyTab swiper-container js-propertyTab-slider">
 				<div class="swiper-wrapper">
-					<?php foreach ($terms as $key => $value): ?>
+					<?php foreach ($terms as $key => $value): 
+                        $tab_icon_field = get_field('tab_icon', 'property_type_'. $value->term_id);
+                        $tab_icon = !empty($tab_icon_field) ? $tab_icon_field['sizes']['medium'] : PAS.'/assets/img/ico/ico_tra-sua.svg' 
+                        ?>
 						<div class="swiper-slide">
 							<div class="js-propertyTab__each c-gridPost-tab__each <?php echo $key == 0 ? 'is-active' : '' ?> " data-tab-id="<?php echo $value->term_id ?>" data-tab-content="js-property-content">
 								<div class="icon">
-									<img src="<?php echo PAS ?>/assets/img/ico/ico_tra-sua.svg" alt="<?php echo $value->name ?>">
+									<img src="<?php echo $tab_icon ?>" alt="<?php echo $value->name ?>">
 								</div>
 								<div class=""><?php echo  str_replace("Du Lịch", "DL", $value->name); ?></div>
 							</div>
@@ -202,9 +207,10 @@ Template Name: Trang chủ
 </section>
 <div class="c-banner">
 	<div class="l-container-sp--full">
-
 		<div class="c-banner-item">
+        <a href="http://" target="_blank" rel="noopener noreferrer">
 			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
+        </a>
 		</div>
 	</div>
 </div>
@@ -239,9 +245,9 @@ Template Name: Trang chủ
                         ?>
                         <div class="swiper-slide">
                             <div class="c-comment-boxList__each">
-                                <p class="each-content">
-                                    <?= $text; ?>
-                                </p>
+                                <div class="each-content">
+                                    <p><?= $text; ?></p>
+                                </div>
                                 <div class="each-avatar">
                                     <img class="user" src="<?= $photo_link[0] ?>" alt="#">
                                     <?php echo get_the_post_thumbnail($photo_id, 'houzez-item-image-1', array('alt' => esc_html(get_the_title()), 'class' => 'user')); ?>
@@ -314,6 +320,13 @@ Template Name: Trang chủ
                     <div class="swiper-container js-doitac-slide">
                         <div class="swiper-wrapper">
                         <?php
+                            foreach ($doitacList as $value): ?>
+                                <div class="swiper-slide">
+                                <img srcset="<?php echo PAS ?>/assets/img/<?php echo $value['image'] ?>, <?php echo PAS ?>/assets/img/<?php echo $value['image2x'] ?> 2x" src="<?php echo PAS ?>/assets/img/<?php echo $value['image2x'] ?>" alt="<?php echo $value['alt'] ?>">
+
+                                </div>
+                            <?php
+                            endforeach;
                             foreach ($doitacList as $value): ?>
                                 <div class="swiper-slide">
                                 <img srcset="<?php echo PAS ?>/assets/img/<?php echo $value['image'] ?>, <?php echo PAS ?>/assets/img/<?php echo $value['image2x'] ?> 2x" src="<?php echo PAS ?>/assets/img/<?php echo $value['image2x'] ?>" alt="<?php echo $value['alt'] ?>">

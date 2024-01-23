@@ -9,8 +9,8 @@
             <?php echo get_the_post_thumbnail(get_the_ID(), 'medium') ?>
         </a>
     </div>
-    <div class="each-title social">
-        <h3><?php the_title() ?></h3>
+    <div class="each-title has-social">
+        <h3><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
         <div class="each-social">
             <img src="<?php echo PAS ?>/assets/img/ico/ico_share.svg" alt="" class="">
             <?php get_template_part('page/views/postShare1') ?>

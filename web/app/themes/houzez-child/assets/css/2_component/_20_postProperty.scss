@@ -7,6 +7,10 @@
         color: $text_color;
         height: min-content;
 
+        a {
+            color: $text-color;
+        }
+
         &col2 {
             grid-column: span 2;
 
@@ -22,11 +26,26 @@
             border-radius: 5px;
             overflow: hidden;
 
+            a {
+                &:hover {
+                    opacity: 1;
+                }
+            }
+            
             img {
                 position: absolute;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                transform: scale(1.0001);
+                transform-origin: center;
+            }
+            
+            &:hover {
+                img {
+                    opacity: 1;
+                    transform: scale(1.1);
+                }
             }
         }
 
@@ -81,9 +100,8 @@
             overflow: hidden;
         }
 
-        .social {
+        .has-social {
             padding-right: 40px;
-
         }
 
         .each-social {
@@ -116,7 +134,7 @@
                 pointer-events: none;
                 transform: translateY(30px);
 
-                > img {
+                img {
                     width: 40px;
                     height: 40px;
                 }
@@ -323,6 +341,24 @@
 
     &-map {
         color: $primary;
+        font-weight: 600;
+        padding-left: 1.8em;
+        position: relative;
+
+        &::before {
+            content: '';
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            position: absolute;
+            width: 1.5em;
+            height: 1.2em;
+            background-image: url("../img/ico/ico_map.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left center;
+        }
+        
     }
 
     &-list {
@@ -444,6 +480,10 @@
     flex-wrap: wrap;
     row-gap: 16px;
 
+    @include media-query ('s') {
+        margin-bottom: 20px;
+    }
+
     &Term {
         width: 100%;
 
@@ -458,6 +498,16 @@
         margin-right: auto;
 
     }
+
+    &Share {
+        @include media-query ('s') {
+            display: none;
+        }
+    }
+}
+
+.c-single-date {
+    margin-right: auto;
 }
 
 .c-singleGallery {
@@ -556,15 +606,42 @@
             }
         }
     }
-
-    
 }
 
 .c-propertyShare {
     display: flex;
-    gap: 10px;
+    gap: 16px;
+
+    img {
+        width: 40px;
+        height: 40px;
+
+        @include media-query ('s') {
+            width: 32px; 
+            height: 32px;
+        }
+    }
 }
 
 .c-singleRetated {
     background-color: var(--color-gray-f3);
+}
+
+.location__description .block-wrap {
+    @include media-query ('s') {
+        border-top: unset;
+    }
+}
+
+.location__share {
+    display: none;
+    margin-top: 32px;
+
+    .c-propertyShare {
+        justify-content: center;
+    }
+
+    @include media-query ('s') {
+        display: block;
+    }
 }

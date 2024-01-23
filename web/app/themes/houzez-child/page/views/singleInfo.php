@@ -3,15 +3,9 @@
 
     $address    = houzez_get_listing_data('property_address');
     $phone    = houzez_get_listing_data('c491ie1bb87n-thoe1baa1i');
-    // $zipcode    = houzez_get_listing_data('property_zip');
-    // $country    = houzez_taxonomy_simple('property_country');
     $city       = houzez_taxonomy_simple('property_city');
-    // $state      = houzez_taxonomy_simple('property_state');
     $area       = houzez_taxonomy_simple('property_area');
     $zipcode    = houzez_get_listing_data('property_zip');
-
-
-    // echo '<li class="detail-city"><strong>'.houzez_option( 'spl_city', 'City' ).'</strong> <span>'.esc_attr( $city ).'</span></li>';
 
 ?>
 

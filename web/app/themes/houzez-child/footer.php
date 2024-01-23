@@ -14,13 +14,13 @@
 		<div class="c-footerContact c-footer-grid__left">
 			<div class="c-footerContact-each c-footerContact-email">
 				<a href="mailto:anchoivungtau72@gmail.com">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_email.svg" alt="Email icon">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_email.png" alt="Email icon">
 					Email: anchoivungtau72@gmail.com
 				</a>
 			</div>
 			<div class="c-footerContact-each c-footerContact-phone">
 				<a href="tel:0917728668">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_phone.svg" alt="Phone icon">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_phone.png" alt="Phone icon">
 					Hotline: <span class="highlight">09117 28668</span>
 				</a>
 			</div>
@@ -29,30 +29,30 @@
 			<p class="c-footerSocial__header">Kết nối với chúng tôi</p>
 			<div class="c-footerSocial-facebook">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_facebook-white.svg" alt="Facebook logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_facebook-white.png" alt="Facebook logo">
 				</a>
 			</div>
 			<div class="c-footerSocial-tiktok">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_tiktok.svg" alt="Tiktok logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_tiktok-white.png" alt="Tiktok logo">
 				</a>
 
 			</div>
 			<div class="c-footerSocial-instagram">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_instagram-white.svg" alt="Instagram logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_instagram-white.png" alt="Instagram logo">
 				</a>
 
 			</div>
 			<div class="c-footerSocial-youtube">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_youtube.svg" alt="Youtube logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_youtube.png" alt="Youtube logo">
 				</a>
 
 			</div>
 			<div class="c-footerSocial-zalo">
 				<a href="http://" target="_blank" rel="noopener noreferrer">
-					<img src="<?php echo PAS ?>/assets/img/ico/ico_zalo-white.svg" alt="Zalo logo">
+					<img src="<?php echo PAS ?>/assets/img/ico/ico_zalo-white.png" alt="Zalo logo">
 				</a>
 			</div>
 		</div>

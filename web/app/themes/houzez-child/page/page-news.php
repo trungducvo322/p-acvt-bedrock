@@ -18,8 +18,10 @@ Template Name: Tin tức
         ]
     ]
 ?>
-<div class="l-container">
-    <?php get_template_part('page/views/breadcrumbsView', '' , [ 'breadcrumbs_list' => $breadcrumbs]) ?>
+<div class="c-pagePostNews-breadcrumbs">
+    <div class="l-container">
+        <?php get_template_part('page/views/breadcrumbsView', '' , [ 'breadcrumbs_list' => $breadcrumbs]) ?>
+    </div>
 </div>
 
 <section class="c-pagePostNews-new">
@@ -28,37 +30,46 @@ Template Name: Tin tức
             <h2 class="c-titleStyle2">TIN MỚI NHẤT</h2>
         </div>
         <div class="c-pagePostNews-new-box mt-50 mt-s-30">
-            <div class="c-pagePostNews-new-list c-postNews">
-                <?php
-                    $args = array(
-                        'post_type' => 'post',
-                        'post_status' =>  'publish',
-                        'posts_per_page' => 3,
-                        'orderby' => 'date',
-                        'order' => 'DESC',
-                        'post__not_in' => $not__in
-                    );
+            <?php
+                $args = array(
+                    'post_type' => 'post',
+                    'post_status' =>  'publish',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'post__not_in' => $not__in
+                );
 
-                    $newPosts = new WP_Query($args);
-                    if ($newPosts->have_posts()):
-                        $count = 0;
-                        while ($newPosts->have_posts()) : $newPosts->the_post();
-                            ++$count;
-                            $template_data = [
-                                "class" => 'c-pagePostNews-new-list__each'
-                            ];
-                            if ($count == 1) {
-                                $template_data['column'] = 2;
-                            }
+                $newPosts = new WP_Query($args);
 
-                            get_template_part('page/views/postViewNewsItem', '', $template_data);
-                        endwhile;
-                    endif;
-                    wp_reset_postdata();
-                ?>
-            </div>
+                if ( $newPosts->have_posts() ): ?>
+                    <div class="swiper-container js-pagenews-slide">
+                        <div class="c-pagePostNews-new-list c-postNews swiper-wrapper">
+                        <?php
+                            $count = 0;
+                            while ( $newPosts->have_posts() ):
+                                ++$count;
+                                $is2col = ($count == 1) ? 'c-postNews__eachcol2' :'';
+                                $template_data = [
+                                    "class" => 'c-pagePostNews-new-list__each'
+                                ];
+                                if ($count == 1) {
+                                    // $template_data['column'] = 2;
+                                }
+    
+                                $newPosts->the_post();
+                                echo "<div class=\"swiper-slide ".$is2col." \">";
+                                get_template_part('page/views/postViewPropertyItem', '', $template_data);
+                                echo "</div>";
+                            endwhile;
+                        ?>
+                        </div>
+                    </div>
+                    <?php
+                endif;
+                wp_reset_postdata();
+            ?>
         </div>
-
     </div>
 </section>
 
@@ -120,7 +131,9 @@ Template Name: Tin tức
 <div class="c-banner">
 	<div class="l-container-sp--full">
 		<div class="c-banner-item">
-			<img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <img src="<?php echo PAS ?>assets/img/banner/img_bannerLong2.jpg" alt="">
+            </a>
 		</div>
 	</div>
 </div>
