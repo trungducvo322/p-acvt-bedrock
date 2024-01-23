@@ -1,4 +1,17 @@
 <?php
+
+function nothingFound() {
+    ob_start();
+    get_template_part('page/views/empty-box');
+    wp_reset_postdata();
+
+    $content = ob_get_contents();
+
+    ob_end_clean();
+
+    return $content;
+}
+
 function ajax_property_loaihinh(){
 
 $result['type'] = 'error';
@@ -25,13 +38,10 @@ $args = [
 $the_query = new WP_Query( $args );
 
 if (is_wp_error($the_query) ) {
-    $result = json_encode($result);
+    $result = nothingFound();
 
 } elseif (!is_wp_error($the_query) && $the_query->post_count == 0) {
-    $result['type'] = 'empty';
-    $result['message'] = "Khong co du lieu";
-
-    $result = json_encode($result);
+    $result = nothingFound();
 
 } else{
     ob_start();
@@ -93,13 +103,14 @@ if ($cate_id >= 0 && $cate_id !== 'all') {
 $the_query = new WP_Query( $args );
 
 if (is_wp_error($the_query) ) {
-    $result = json_encode($result);
+    // $result = json_encode($result);
+    $result = nothingFound();
 
 } elseif (!is_wp_error($the_query) && $the_query->post_count == 0) {
-    $result['type'] = 'empty';
-    $result['message'] = "Khong co du lieu";
-
-    $result = json_encode($result);
+    // $result['type'] = 'empty';
+    // $result['message'] = "Khong co du lieu";
+    // $result = json_encode($result);
+    $result = nothingFound();
 
 } else{
     ob_start();

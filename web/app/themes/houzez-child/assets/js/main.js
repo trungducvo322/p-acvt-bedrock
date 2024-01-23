@@ -650,3 +650,20 @@ function tooltipFunction(e) {
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copy to clipboard";
   }
+
+  // back to top
+
+var btn = '.js-backToTop';
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    $(btn).addClass('is-show');
+  } else {
+    $(btn).removeClass('is-show');
+  }
+});
+
+$(document).on('click touch', btn ,function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});

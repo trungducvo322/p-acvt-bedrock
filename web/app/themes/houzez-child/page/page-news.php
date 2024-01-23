@@ -123,6 +123,8 @@ Template Name: Tin tức
                             ]) ?>
                     </div>
                     <?php
+                else:
+                    get_template_part('page/views/empty-box');                    
                 endif;
             ?>
         </div>

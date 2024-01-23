@@ -423,8 +423,11 @@
     flex-wrap: wrap;
     gap: 10px;
     font-size: 1.2rem;
-    color: #fff;
     border-radius: 2px;
+
+    a {
+        color: #fff !important;
+    }
 
     &__each {
         padding: 0 10px;

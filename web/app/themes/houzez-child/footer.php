@@ -1,5 +1,6 @@
 </main>
 
+	<a class="c-backToTop js-backToTop"></a>
 <!--▼ Footer ▼-->
 </main>
 <footer class="c-footer">

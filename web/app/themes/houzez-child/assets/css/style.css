@@ -752,6 +752,21 @@ main {
   }
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid var(--color-gray-f3);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: var(--color-blue--800);
+}
+
 /*≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // Component 
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡*/
@@ -1984,8 +1999,10 @@ main {
   flex-wrap: wrap;
   gap: 10px;
   font-size: 1.2rem;
-  color: #fff;
   border-radius: 2px;
+}
+.c-propertyTypeTag a {
+  color: #fff !important;
 }
 .c-propertyTypeTag__each {
   padding: 0 10px;
@@ -2698,6 +2715,7 @@ main {
 }
 .c-tintuc-box {
   margin-top: 50px;
+  overflow: hidden;
 }
 .c-tintuc-bottom {
   padding-top: 30px;
@@ -2737,9 +2755,6 @@ main {
   transform-origin: center;
   transform: scale(1.0001);
 }
-.c-banner-item img:hover {
-  transform: scale(1.1);
-}
 
 .bannerSide {
   border: 1px solid #DEDEDE;
@@ -2751,14 +2766,54 @@ main {
 .bannerSide-item {
   padding: 20px;
 }
-.bannerSide-item img:hover {
-  transform: scale(1.1);
-}
 
 @media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
   .c-singleSidebar-banner {
     display: none;
   }
+}
+
+.c-backToTop {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 199;
+  background-color: #fff;
+  border: 2px solid var(--color-blue--800);
+  opacity: 0;
+}
+.c-backToTop.is-show {
+  opacity: 1;
+}
+.c-backToTop:hover {
+  opacity: 1;
+  border-color: var(--color-blue--900);
+  cursor: pointer;
+}
+.c-backToTop::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("../img/ico/ico_top-arrow.png");
+  background-size: 80% 80%;
+  background-position: center center;
+}
+@media screen and (max-width: 680px), screen and (max-width: 737px) and (orientation: landscape) {
+  .c-backToTop {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+.c-nothingFound {
+  text-align: center;
+  padding: 50px 30px;
 }
 
 /*------------------------------------------------------------

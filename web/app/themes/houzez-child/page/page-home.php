@@ -184,19 +184,21 @@ Template Name: Trang chủ
         <?php endif; ?>
 		<div class="l-container">
         	<div class="c-gridPost-tabcontent mt-50 mt-s-30">
-            <?php
-				if ( $propertyList->have_posts() ): ?>
-				<div id="js-property-content" class="c-gridPost-tabcontent-left">
-					<?php get_template_part('page/views/postViewPropertyTab', '', [
-						'propertyList' => $propertyList,
-						'term_id' => $defaultTerm,
-						'page' => 1
-						]); ?>
-				</div>
-				<?php
-				endif;
-				wp_reset_postdata();
-			?>
+                <div id="js-property-content" class="c-gridPost-tabcontent-left">
+                <?php
+                    if ( $propertyList->have_posts() ): ?>
+                        <?php get_template_part('page/views/postViewPropertyTab', '', [
+                            'propertyList' => $propertyList,
+                            'term_id' => $defaultTerm,
+                            'page' => 1
+                            ]); ?>
+                    <?php
+                    else:
+                        get_template_part('page/views/empty-box');
+                    endif;
+                wp_reset_postdata();
+                ?>
+                </div>
 				<div class="c-gridPost-tabcontent-right">
 					<?php get_template_part('page/views/postViewPropertyBanner') ?>
 				</div>

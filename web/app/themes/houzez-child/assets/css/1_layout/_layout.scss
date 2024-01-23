@@ -141,3 +141,19 @@ main {
 		top: -90px;
 	}
 }
+
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+        
+::-webkit-scrollbar-track {
+	border-radius: 8px;
+	background-color: #fff;
+	border: 1px solid var(--color-gray-f3);
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background-color: $secondary;
+}
