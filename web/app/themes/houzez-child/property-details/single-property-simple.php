@@ -26,25 +26,25 @@ if ($layout): foreach ($layout as $key=>$value) {
             get_template_part('property-details/energy');
             break;
 
-        case 'address':
-            get_template_part('property-details/address');
-            break;
+        // case 'address':
+        //     get_template_part('property-details/address');
+        //     break;
 
-        case 'details':
-            get_template_part('property-details/detail');
-            break;
+        // case 'details':
+        //     get_template_part('property-details/detail');
+        //     break;
 
-        case 'features':
-            get_template_part('property-details/features');
-            break;
+        // case 'features':
+        //     get_template_part('property-details/features');
+        //     break;
 
         // case 'floor_plans':
         //     get_template_part('property-details/floor-plans');
         //     break;
 
-        case 'video':
-            get_template_part('property-details/video');
-            break;
+        // case 'video':
+        //     get_template_part('property-details/video');
+        //     break;
 
         // case 'virtual_tour':
         //     get_template_part('property-details/virtual-tour');

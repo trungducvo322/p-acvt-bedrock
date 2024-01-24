@@ -17,3 +17,81 @@ Template: houzez
 
 /* Your CSS code goes here
 -------------------------------------- */
+/* .archive.category .advanced-search-nav{display:none;} .single-property .slick-list.draggable{height:600px!important;}
+.logo img{width: 80px;height: 80px;}
+h2.item-title {font-weight: 600;}
+.footer-bottom-wrap-v3 {padding: 15px 0 30px;}
+ul.blocks-gallery-grid,figure.wp-block-gallery.is-cropped {margin-bottom: 0;}
+.wp-block-columns p:last-child{margin-bottom: 0;}
+.single-property .property-banner .slick-list .slick-slide {height: 450px;overflow: hidden;}
+.single-property .property-banner .slick-list .slick-slide img{height: 450px;}
+.lightbox-content-wrap .property-overview-data .flex-fill {width: 100%;display: inline-flex;padding: 5px 0;flex-flow: column-reverse;}
+.home-blog .blog-post-item .blog-post-title h3{height: 72px;overflow: hidden;}
+.home-blog .blog-post-item .blog-post-body{height: 42px;overflow: hidden;margin-bottom: 10px;}
+.home-video .blog-post-item .blog-post-title h3{height: 48px;overflow: hidden;}
+.home-video .blog-post-item .blog-post-body{height: 42px;overflow: hidden;margin-bottom: 10px;}
+li.item-price.item-price-text:after {
+    content: "";
+    background: #ff0000;
+    color: #fff;
+    width: 110%;
+    height: 30px;
+    position: absolute;
+    left: -5%;
+    z-index: -1;
+    border-radius: 5px;
+    top: 0;
+}
+.modal-content li.item-price.item-price-text:after{top: 20px;width: 100%;left: 0px;}
+.modal-content li.item-price.item-price-text{text-align: center;}
+.lightbox-logo img{width: 40px;}
+.property-lightbox .modal-header{background:#1e73be;}
+li.item-price.item-price-text{line-height: 30px;color: #fff;font-size: 15px;}
+.page-title-wrap .item-price-wrap .item-price{font-size: 20px;}
+.testimonial-body {height: 250px;overflow: auto;}
+.archive .features-list-wrap * {color: #222!important;}
+.archive section#desktop-header-search {background: #f7f8f9;}
+.related-posts-wrap .blog-post-item .blog-post-title h3{height: 48px;overflow: hidden;}
+.related-posts-wrap .blog-post-item .blog-post-body{height: 84px;overflow: hidden;margin-bottom: 10px;}
+.category-video .elementor-post__thumbnail.elementor-fit-height:before,.category-video .blog-post-thumb a:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    z-index: 9;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-image: url(/wp-content/uploads/2021/06/play-01.svg);
+}
+header.header-main-wrap.header-transparent-wrap{
+    background: linear-gradient(180deg, #00000050 20%, transparent );
+}
+.ap-form-field-wrapper label {font-size: 18px;line-height: 24px;text-transform: uppercase;}
+.ap-form-field-wrapper {margin-top: 20px;}
+.ap-form-wrapper{margin-bottom: 50px;}
+.member-post{min-height: 570px;}
+.ap-login-text {
+    text-decoration: underline;
+    font-size: 20px;
+    font-style: italic;
+}
+.ap-main-submit-button{display: none;}
+.login-register-nav a.btn-memberpost{padding: 5px;min-width: 150px;}
+.ap-post-submission-message {
+    color: red;
+    text-decoration: underline;
+}
+@media screen and (min-width: 1025px){
+.single-property .lightbox-gallery .slick-list .slick-slide img{height: 530px;}
+}
+@media screen and (max-width: 600px){
+	.logo img{padding:15px;top: 0;}
+    .visible-on-mobile li.item-price.item-price-text{line-height: 30px;color: red;font-size: 15px;}
+    .visible-on-mobile li.item-price.item-price-text:after{content: unset;}
+    .mobile-property-title {padding: 0 15px 28px;}
+    .block-wrap{padding: 30px 15px;}
+    .property-review-wrap{padding: 0 15px;}
+    .similar-property-wrap{padding: 0 15px 30px;}
+} */

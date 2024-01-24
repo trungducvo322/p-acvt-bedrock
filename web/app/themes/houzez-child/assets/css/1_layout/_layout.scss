@@ -2,13 +2,14 @@
 ------------------------------------------------------------*/
 body {
 	font-family: $mainFonts;
-	font-size: 1.4rem;
+	font-size: 1.8rem;
 	width: 100%;
 	margin: auto;
-	line-height: 1.5;
+	line-height: 1.8;
 	word-break: break-word;
 	@include media-query("s") {
 		min-width: 320px;
+		font-size: 1.4rem;
 	}
 }
 
@@ -41,7 +42,7 @@ main {
 }
 //-------------------------------------------------------
 %container {
-	max-width: $con_width;
+	max-width: $con_width2;
 	margin: 0 auto;
 	padding: 0 15px;
 	width: 100%;
@@ -49,41 +50,51 @@ main {
 
 .l-container {
 	@extend %container;
+	
+	&-sp--full {
+		@extend %container;
+		max-width: $con_width2 + 30px;
+		padding: 0;
+  }
 }
 
 .l-container2 {
 	@extend %container;
 	max-width: $con_width2;
 }
-//-------------------------------------------------------
-.mainv__inner {
-	position: relative;
-
-	.mainv__imageBox {
-		text-align: right;
-		max-height: 100vh;
-		min-height: 500px;
-		overflow: hidden;
-		position: relative;
-		width: 100%;
-		height: 37vw;
-		margin-left: auto;
-	}
-
-	.mainv__image {
-		width: 100%;
-		height: 100%;
-		max-width: none;
-		object-fit: cover;
-		font-family: "object-fit: cover;";
-		min-width: 100%;
-		animation-name: Move;
-		animation-duration: 1.8s;
-		animation-delay: .3s;
-		animation-fill-mode: both;
-		animation-timing-function: ease-out;
-	}
+.l-containerFull {
+	@extend %container;
+	max-width: unset;
 }
+//-------------------------------------------------------
+// .mainv__inner {
+// 	position: relative;
+
+// 	.mainv__imageBox {
+// 		text-align: right;
+// 		max-height: 100vh;
+// 		min-height: 500px;
+// 		overflow: hidden;
+// 		position: relative;
+// 		width: 100%;
+// 		height: 37vw;
+// 		margin-left: auto;
+// 	}
+
+// 	.mainv__image {
+// 		width: 100%;
+// 		height: 100%;
+// 		max-width: none;
+// 		object-fit: cover;
+// 		font-family: "object-fit: cover;";
+// 		min-width: 100%;
+// 		animation-name: Move;
+// 		animation-duration: 1.8s;
+// 		animation-delay: .3s;
+// 		animation-fill-mode: both;
+// 		animation-timing-function: ease-out;
+// 	}
+// }
 
 //========================
 
@@ -129,4 +140,20 @@ main {
 	@include media-query("nav") {
 		top: -90px;
 	}
+}
+
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+        
+::-webkit-scrollbar-track {
+	border-radius: 8px;
+	background-color: #fff;
+	border: 1px solid var(--color-gray-f3);
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background-color: $secondary;
 }

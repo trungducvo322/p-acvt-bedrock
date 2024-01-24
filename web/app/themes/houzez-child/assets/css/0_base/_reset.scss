@@ -83,12 +83,12 @@ a{
 	color: inherit;
 	text-decoration: none;
 }
-a:hover,
-a:hover img{
-    opacity: 0.80;
-    filter: alpha(opacity=80);
-	-ms-filter: "alpha(opacity=80)";
+a:hover{
+    opacity: 0.70;
+    filter: alpha(opacity=70);
+	-ms-filter: "alpha(opacity=70)";
 }
+
 img{
 	max-width: 100%;
 }

@@ -4,6 +4,21 @@ other
 
 /*
 ------------------------------------------------------------*/
+
+body {
+    background-color: #fff;
+}
+
+main {
+    overflow: hidden;
+    line-height: 1.8;
+
+    @include media-query("s") {
+		font-size: 1.4rem;
+
+	}
+}
+
 .loading {
     text-align: center;
     margin: 0;
@@ -57,4 +72,229 @@ other
 
 .is-ajax-search-details, .is-ajax-search-result {
     padding: 2px!important;
+}
+
+.c-tooltip {
+    position: relative;
+    display: inline-block;
+    background-color: unset;
+    border: unset;
+    padding: 0;
+    
+    .tooltiptext {
+        font-size: 1.2rem;
+        visibility: hidden;
+        width: max-content;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+    }
+
+    &:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.c-loading {
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute; 
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0.8;
+        background-color: rgba($color: #fff, $alpha: 1.0);
+        z-index: 5;
+    }
+
+    &::after {
+        content: '';
+        width: 70px;
+        height: 70px;
+        background-image: url("../img/ico/ico_blocks-scale.svg");
+        background-size: contain;
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 8;
+    }
+}
+
+.dib {
+    display: inline-block;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+@include media-query ('s') {
+    .mt-s-30 {
+        margin-top: 30px !important;
+    }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation heartbeat
+ * ----------------------------------------
+ */
+ @keyframes heartbeat {
+    from {
+      transform: scale(1);
+      transform-origin: center center;
+      animation-timing-function: ease-out;
+    }
+    10% {
+      transform: scale(0.91);
+      animation-timing-function: ease-in;
+    }
+    17% {
+      transform: scale(0.98);
+      animation-timing-function: ease-out;
+    }
+    33% {
+      transform: scale(0.87);
+      animation-timing-function: ease-in;
+    }
+    45% {
+      transform: scale(1);
+      animation-timing-function: ease-out;
+    }
+  }
+
+/**
+ * ----------------------------------------
+ * animation shadow-pop-tr
+ * ----------------------------------------
+ */
+ @keyframes shadow-pop-tr {
+    0% {
+      box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+      transform: translateX(0) translateY(0);
+    }
+    100% {
+      box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+      transform: translateX(-8px) translateY(8px);
+    }
+  }
+  
+  
+.c-banner {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    @include media-query ('s') {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
+    a {
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &-item {
+        overflow: hidden;
+        img {
+            width: 100%;
+            transform-origin: center;
+            transform: scale(1.0001);
+        }
+    }
+}
+
+.bannerSide {
+    border: 1px solid #DEDEDE;
+    background: #F3F3F3;
+
+    a {
+        &:hover {
+            opacity: 1;
+        }
+    } 
+        
+    &-item {
+        padding: 20px;
+    }
+}
+
+.c-singleSidebar {
+    &-banner {
+        @include media-query ('s') {
+            display: none;
+        }
+    }
+}
+
+.c-backToTop {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 199;
+    background-color: #fff;
+    border: 2px solid $secondary;
+    opacity: 0;
+
+    &.is-show {
+        opacity: 1;
+    }
+    
+    &:hover {
+        opacity: 1;
+        border-color: $primary;
+        cursor: pointer;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: url("../img/ico/ico_top-arrow.png");
+        background-size: 80% 80%;
+        background-position: center center;
+    }
+
+    @include media-query ('s') {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+.c-nothingFound {
+    text-align: center;
+    padding: 50px 30px;
 }

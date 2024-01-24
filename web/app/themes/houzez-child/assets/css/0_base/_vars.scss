@@ -2,13 +2,14 @@
 $max_width : 100%;
 $min_width : 1200px;
 $con_width : 1086px;
-$con_width2 : 1470px;
+$con_width2 : 1400px;
 
 //font
 $mainFonts : 'Montserrat', sans-serif;
 
 // color
 :root {
+    --color-dark-blue: #1E3362;
     --color-blue--900: #2E62C3;
     --color-blue--800: #60AEFF;
 
@@ -22,9 +23,14 @@ $mainFonts : 'Montserrat', sans-serif;
 
     --color-gray--800:#656565;
 
-    --color-white--900:#656565; 
+    --color-white--900:#656565;
 
-    --color-red--600:#C30B0B; 
+    --color-red--600:#C30B0B;
+
+    --color-neon: #C3ECFB;
+    --color-neon-op50: #C3ECFB80;
+    --color-gray-73: #737373;
+    --color-gray-f3: #f3f3f3;
 }
 
 //color common
@@ -38,5 +44,7 @@ $error: var(--color-yellow--600);
 $success: var(--color-yellow--600);
 
 $text_color : var(--color-black--600);
-$gray_color : var(--color-gray--800);
+$gray_color : var(--color-gray-73);
+$dark-blue-color: var(--color-dark-blue);
+$neon-color : var(--color-neon);
 $marker: var(--color-white--900);

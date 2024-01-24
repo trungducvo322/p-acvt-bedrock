@@ -1,108 +1,119 @@
-<?php get_header(); ?>
-<?php $category = get_the_category(get_the_ID()); ?>
-<div class="p-news-detail">
-    <section class="single">
-        <div class="l-container-sm">
-            <div class="single__inner">
-                <?php
-                // Start the Loop.
-                while (have_posts()) : the_post(); ?>
-                    <article>
-                        <div class="single__title">
-                            <h1 class="title"><?php the_title(); ?></h1>
-                            <div class="single__credit light">
-                                <span>By <?php the_author(); ?></span>
-                                <img src="<?= PAS ?>assets/img/icon-dot.png" alt="">
-                                <span><?php echo get_the_date(); ?></span>
-                                <img src="<?= PAS ?>assets/img/icon-dot.png" alt="">
-                                <a href="/" target="_blank">anchoivungtau.vn</a>
-                            </div>
-                            <div class="social d-flex justify-content-lg-start justify-content-center align-items-end">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>">
-                                    <img src="<?= PAS ?>assets/img/icon-facebook.png" alt="Facebook">
-                                </a>
-                                <a href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&url=<?php the_permalink() ?>">
-                                    <img src="<?= PAS ?>assets/img/icon-twitter.png" alt="Twitter">
-                                </a>
-                                <a href="#">
-                                    <img src="<?= PAS ?>assets/img/icon-pinterest.png" alt="Pinterest">
-                                </a>
-                                <a href="#">
-                                    <img src="<?= PAS ?>assets/img/icon-instagram.png" alt="Instagram">
-                                </a>
-                                <a href="#">
-                                    <img src="<?= PAS ?>assets/img/icon-youtube.png" alt="Youtube">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- check video  -->
-                        <?php $video_url = get_field('fave_video_post'); ?>
-                        <?php if ($video_url) : ?>
-                            <div id="gallery-videos-demo">
-                                <a class="video__item single__featureVideo" data-id="<?= get_the_ID(); ?>" data-lg-size="1280-720" data-src="<?= $video_url ?>" data-poster="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" data-sub-html="<h4><?php the_title(); ?></h4><p><?php the_excerpt(); ?></p>">
-                                    <div class="single__featurebox">
-                                        <img class="single__featureImg w-100" src="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" alt="#">
-                                    </div>
-                                </a>
-                            </div>
-                        <?php else : ?>
-                            <div class="single__featurebox">
-                                <img class="single__featureImg w-100" src="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" alt="<?php the_title(); ?>">
-                            </div>
-                        <?php endif; ?>
+<?php get_header();
 
-                        <div class="single__body post-content-wrap">
-                            <?php the_content(); ?>
+    $category = get_the_category(get_the_ID()); 
+
+    $breadcrumbs = [
+        [
+            'url' => home_url(),
+            'name' => "Trang chủ"
+        ],
+        [
+            'url' => home_url($category[0]->slug),
+            'name' => $category[0]->name
+        ],
+        [
+            'url' => get_the_permalink(),
+            'name' => get_the_title(),
+        ],
+    ];
+
+?>
+<div class="p-news-detail">
+    <section class="location">
+        <div class="l-container">
+            <div class="breadcrumbs">
+                <?php get_template_part('page/views/breadcrumbsView', '', ['breadcrumbs_list' => $breadcrumbs]) ?>
+            </div>
+            <h1 class="c-single-header c-titleStyle2"><?php the_title(); ?></h1>
+            <div class="c-single-info">
+                <div class="c-single-date"><?php echo get_the_date( 'd/m/Y' ) ?></div>
+                <div class="c-single-infoShare">
+                    <?php get_template_part('page/views/singleShare') ?>
+                </div>
+            </div>
+
+            <div class="p-news-inner">
+                <div class="c-singleGallery-main">
+                    <div class="c-singleGallery-list__each">
+                        <a class="" href="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" data-fancybox="gallery">
+                            <div class="image-box image-box-main">
+                                <img class="w-100" src="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" alt="#">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row justify-content-between  mt-50 mt-s-30">
+                    <div class="col-lg-8 col-md-12 bt-content-wrap">
+                        <?php the_content(); ?>
+
+                        <div class="location__share">
+                            <?php get_template_part('page/views/singleShare') ?>
                         </div>
-                    </article>
-                <?php endwhile; ?>
+                    </div>
+                    <div class="col-lg-3 col-12 c-singleSidebar">
+                        <div class="location__statistic mt-s-30">
+                            <h4 class="title-small">Liên hệ chúng tôi</h4>
+                            <?php get_sidebar('property'); ?>
+                        </div>
+                        <div class="c-singleSidebar-banner">
+                            <?php get_template_part('page/views/postViewPropertyBanner') ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="category">
-        <div class="l-container">
-            <div class="category__inner">
-                <h3 class="title">Bài viết liên quan</h3>
-                <div class="category__content">
-                    <div class="row row gx-md-5 gx-4">
-                        <?php
-                        $args = array(
-                            'post_type' => 'post',
-                            'post_status' =>  'publish',
-                            'posts_per_page' => 3,
-                            'orderby' => 'rand',
-                            'order' => 'DESC',
-                            'post__not_in' => array(get_the_ID()),
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'category',
-                                    'field' => 'id',
-                                    'terms' => $category[0]->term_id,
-                                ),
-                            ),
-                        );
+    <div class="c-banner">
+        <div class="l-container-sp--full">
+            <div class="c-banner-item">
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <img src="<?php echo PAS ?>assets/img/banner/img_bannerLong1.jpg" alt="">                
+                </a>
+            </div>
+        </div>
+    </div>
 
-                        $loop = new WP_Query($args);
-                        ?>
-                        <?php if ($loop->have_posts()) { ?>
-                            <?php while ($loop->have_posts()) : $loop->the_post(); ?>
-                                <div class="col-md-4 col-6">
-                                    <a href="<?php the_permalink() ?>" class="category__item">
-                                        <div class="imgbox">
-                                            <img class="w-100" src="<?= get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail') ?>" alt="<?php the_title(); ?>">
-                                        </div>
-                                        <div class="category__details">
-                                            <h4 class="title-small"><?php the_title(); ?></h4>
-                                            <span class="light"><?php echo get_the_date(); ?></span>
-                                        </div>
-                                    </a>
-                                </div>
-                        <?php endwhile;
-                        }
-                        wp_reset_postdata();
-                        ?>
-                    </div>
+    <section class="others c-singleRetated">
+        <div class="l-container">
+            <div class="others__inner">
+                <h2 class="c-titleStyle2">Các địa điểm khác</h2>
+                <div class="mt-50 mt-s-30">
+                    <?php
+                    $args = [
+                        'post_type' => 'post' ,
+                        'posts_per_page' => 16,
+                    ];
+
+                    if (!empty($category)) {
+                        $args['tax_query'] =  array(
+                            array(
+                                'taxonomy' => 'category',
+                                'terms' => $category[0]->term_id,
+                                'field' => 'term_id',
+                            )
+                        );
+                    ;
+                    }
+
+                    $loop = new WP_Query($args);
+                    if ( $loop->have_posts() ): ?>
+                        <div class="swiper-container js-tintuc-slide">
+                            <div class="swiper-wrapper">
+                            <?php
+                                while ( $loop->have_posts() ):
+                                    $loop->the_post();
+                                    echo "<div class=\"swiper-slide\">";
+                                    get_template_part('page/views/postViewPropertyItem');
+                                    echo "</div>";
+                                endwhile;
+                            ?>
+                            </div>
+                        </div>
+                        <?php
+                        endif;
+                    wp_reset_postdata();
+                    ?>
                 </div>
             </div>
         </div>

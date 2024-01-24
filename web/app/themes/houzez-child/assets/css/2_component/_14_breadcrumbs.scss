@@ -1,0 +1,13 @@
+.c-breadcrumbs {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 10px;
+
+    a {
+        color: $text-color;
+    }
+
+    @include media-query ('s') {
+        display: none;
+    }
+}
