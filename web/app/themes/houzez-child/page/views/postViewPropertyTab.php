@@ -50,5 +50,5 @@ $banner_index = 0;
         <?php 
         endif;
     ?>
-    <div class="c-postNews-pagi__pagiPage">Trang <input type="text" name="page" class="c-postNews-pagi__pagiInput js-pagi-page" value="<?php echo $page ?>">/ <?php echo $totalPage ?></div>
+    <div class="c-postNews-pagi__pagiPage">Trang <input type="text" name="page" class="c-postNews-pagi__pagiInput js-pagi-page" value="<?php echo $page ?>"> / <?php echo $totalPage ?></div>
 </div>

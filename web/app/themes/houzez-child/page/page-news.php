@@ -24,7 +24,7 @@ Template Name: Tin tức
     </div>
 </div>
 
-<section class="c-pagePostNews-new">
+<section class="c-pagePostNews-new mt-s-30">
     <div class="l-container">
         <div class="c-pagePostNews-new-header">
             <h2 class="c-titleStyle2">TIN MỚI NHẤT</h2>

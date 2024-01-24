@@ -101,7 +101,7 @@
         color: #fff;
         font-size: 2.4rem;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         @include media-query('m') {
             font-size: 1.6rem;

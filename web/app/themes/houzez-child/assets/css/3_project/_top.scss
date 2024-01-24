@@ -340,19 +340,19 @@
                 padding: 25px 0;
             }
         }
-    }
-
-    .banner {
-        border: 1px solid #DEDEDE;
-        background: #F3F3F3;
-        grid-column: span 2;
-        display: none;
-        padding: 10px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-
-        @include media-query ("s") {
-            display: grid;
+    
+        .banner {
+            border: 1px solid #DEDEDE;
+            background: #F3F3F3;
+            grid-column: span 2;
+            display: none;
+            padding: 10px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+    
+            @include media-query ("s") {
+                display: grid;
+            }
         }
     }
 }

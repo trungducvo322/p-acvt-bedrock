@@ -25,18 +25,24 @@ li.header__navSearch {
         margin-right: 0;
         z-index: 9990;
         position: fixed;
-        width: 100%;
-        max-width: 100%;
+        width: 75%;
+        height: 100%;
+        min-width: 320px;
         padding: 112px 40px;
         background-color: #fff;
         box-shadow: 3px 3px 16px rgba(0,0,0,.2);
-        left: 0%;
-        top: -110%;
-        transition: top 0.25s ease;
+        left: -100%;
+        top: 0;
+        transition: left 0.25s ease;
 
         @include media-query("nav") {
             padding: 50px 30px;
         }
+    }
+
+    
+    &--active {
+        left: 0%;
     }
 }
 
@@ -165,10 +171,6 @@ li.header__navSearch {
 .menu__button::before,
 .menu__button::after {
     transition: transform 200ms;
-}
-
-.header__navList--active {
-    top: 0%;
 }
 
 .menu__button.active {
@@ -328,6 +330,8 @@ li.header__navSearch {
 
         &.active {
             position: fixed;
+            // top: 10px;
+            // left: 74%;
 
             &::before {
                 transform: rotate(45deg);
@@ -430,13 +434,12 @@ li.header__navSearch {
             margin-left: 0;
             padding: 5px 15px;
             background-color: #fff;
-            box-shadow: 0 5px 15px rgba($color: $gray_color, $alpha: 0.5);
-            border-radius: 5px;
-            border: 1px solid $gray-color;
+            box-shadow: 2px 7px 15px 7px rgb(0 0 0 / 14%);
+            border-radius: 10px;
 
             > .menu-item {
-                padding: 5px 0;
-                border-bottom: 1px solid $gray-color;
+                padding: 8px 0;
+                border-bottom: 1px solid #c1c1c1;
 
                 &:last-of-type {
                     border-bottom-width: 0;
@@ -455,5 +458,12 @@ li.header__navSearch {
                 }
             }
         }
+    }
+}
+
+.header__nav {
+    .is-form-style input.is-search-input {
+        font-family: $mainFonts;
+        color: $text-color;
     }
 }
