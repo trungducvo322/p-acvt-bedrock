@@ -14,27 +14,30 @@
         ],
         [
             'url' => get_the_permalink(),
-            'name' => get_the_title(),
+            // 'name' => get_the_title(),
+            'name' => "Về chúng tôi",
         ],
     ];
 
 ?>
-<div class="p-news-detail">
+<div class="p-about">
     <section class="location">
         <div class="l-container">
             <div class="breadcrumbs">
                 <?php get_template_part('page/views/breadcrumbsView', '', ['breadcrumbs_list' => $breadcrumbs]) ?>
             </div>
-            <h1 class="c-single-header c-titleStyle2"><?php the_title(); ?></h1>
-
-            <div class="-----inner">
-                <div class="row justify-content-between  mt-50 mt-s-30">
-                    <div class="col-lg-3 col-12">
-
-                    </div>
-
-                    <div class="col-lg-6 col-md-12">
-                        <?php the_content(); ?>
+            <div class="p-about-inner">
+                <div class="row justify-content-between">
+                    <div class="col-lg-9 col-md-12">
+                        <div class="row">
+                            <h1 class="c-titleStyle2"><?php the_title(); ?></h1>
+                            <div class="col-lg-4 col-12 mt-50 mt-s-30">
+                                <img src="<?php echo PAS ?>assets/img/logo/logo.png" alt="Ăn chơi vũng tàu">
+                            </div>
+                            <div class="col-lg-8 col-md-12 mt-50 mt-s-30">
+                                <?php the_content(); ?>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-3 col-12">
                         <div class="location__statistic mt-s-30">
